@@ -1,0 +1,26 @@
+<mat-expansion-panel [expanded]="true">
+
+  <mat-expansion-panel-header>
+    <mat-panel-title><mat-icon>calendar_today</mat-icon></mat-panel-title>
+    <mat-panel-description>Kalender personalisieren</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <h3>Relevante Wochentage</h3>
+  <mat-radio-group [(ngModel)]="plannerAccount.user.settings.weekdayMode"
+                   (ngModelChange)="plannerAccount.saveSettings()">
+    <mat-radio-button [value]="tWeekdayMode.ALL">Alle Wochentage anzeigen</mat-radio-button>
+    <mat-radio-button [value]="tWeekdayMode.HIDE_WE">Samstag und Sonntag ausblenden</mat-radio-button>
+    <mat-radio-button [value]="tWeekdayMode.HIDE_SU">Sonntag ausblenden</mat-radio-button>
+  </mat-radio-group><p>
+
+  <mat-divider></mat-divider>
+
+  <h3>Relevanter Zeitbereich</h3>
+  <div class="slider">
+    <p><ngx-slider [(value)]="plannerAccount.user.settings.hourFrom"
+                   [(highValue)]="plannerAccount.user.settings.hourTo"
+                   [options]="options"
+                   (userChangeEnd)="plannerAccount.saveSettings()"></ngx-slider></p>
+  </div>
+
+</mat-expansion-panel>

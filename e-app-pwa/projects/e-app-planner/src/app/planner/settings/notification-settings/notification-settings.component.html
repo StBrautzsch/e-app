@@ -1,0 +1,23 @@
+<mat-expansion-panel [expanded]="false">
+
+  <mat-expansion-panel-header>
+    <mat-panel-title><mat-icon>notification_important</mat-icon></mat-panel-title>
+    <mat-panel-description>Benachrichtigungen und Erinnerungen</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-slide-toggle [(ngModel)]="plannerAccount.user.settings.reminderMail"
+                    (ngModelChange)="plannerAccount.saveSettings()">
+    Erinnerung an Termin per E-Mail
+  </mat-slide-toggle>
+
+  <mat-slide-toggle [(ngModel)]="plannerAccount.user.settings.bookingMail"
+                    (ngModelChange)="plannerAccount.saveSettings()">
+    E-Mail bei Buchung durch Klienten
+  </mat-slide-toggle>
+
+  <mat-slide-toggle [(ngModel)]="plannerAccount.user.settings.stornoMail"
+                    (ngModelChange)="plannerAccount.saveSettings()">
+    E-Mail bei Stornierung durch Klienten
+  </mat-slide-toggle>
+
+</mat-expansion-panel>

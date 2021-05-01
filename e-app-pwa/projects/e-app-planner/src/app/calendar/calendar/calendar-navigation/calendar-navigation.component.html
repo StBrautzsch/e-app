@@ -1,0 +1,110 @@
+<mat-card [style.min-width.px]="app.calcContentWidth() - 24"
+          [style.max-width.px]="app.calcContentWidth() - 24">
+
+  <mat-card-actions class="nav-card-actions">
+
+    <div class="flex-row">
+
+      <button mat-mini-fab color="warn" matTooltip="Abbrechen" matTooltipPosition="above"
+              (click)="cancel()">
+        <mat-icon>clear</mat-icon>
+      </button>
+
+      <div class="max"></div>
+
+      <ng-container *ngIf="app.calcContentWidth() > 918">
+        <div class="flex-column min tool-box" style="overflow: hidden">
+          <ng-container *ngIf="calendar.speedSlotCreateMode === tSpeedSlotCreateMode.ACTIVE_15">
+            Klicken Sie in den Kalender, um dort einen 15-Minuten-Slot anzulegen.
+          </ng-container>
+          <ng-container *ngIf="calendar.speedSlotCreateMode === tSpeedSlotCreateMode.ACTIVE_30">
+            Klicken Sie in den Kalender, um dort einen 30-Minuten-Slot anzulegen.
+          </ng-container>
+          <ng-container *ngIf="calendar.speedSlotCreateMode === tSpeedSlotCreateMode.ACTIVE_60">
+            Klicken Sie in den Kalender, um dort einen 60-Minuten-Slot anzulegen.
+          </ng-container>
+          <ng-container *ngIf="!calendar.create && (calendar.speedSlotCreateMode === tSpeedSlotCreateMode.DISABLED)">
+            Klicken Sie in den Kalender, um dort den Beginn eines Zeitraums festzulegen.
+          </ng-container>
+          <ng-container *ngIf="calendar.create && (calendar.speedSlotCreateMode === tSpeedSlotCreateMode.DISABLED)">
+            Startzeit: {{calendar.create.time | date: 'd.M.yyyy H:mm'}} Uhr <br>
+            Klicken Sie auf das Feld der Ende-Zeit.
+          </ng-container>
+        </div>
+
+        <div class="max"></div>
+      </ng-container>
+
+      <button *ngIf="!view.isDayMode() && app.screen.screenSize > 1"
+              mat-mini-fab color="accent" matTooltip="Eine Woche zurück" matTooltipPosition="above"
+              (click)="lastWeek()" [disabled]="!view.isDateValid(calcLastWeek())">
+        <mat-icon>skip_previous</mat-icon>
+      </button>
+
+      <button mat-mini-fab color="primary" matTooltip="Einen Tag zurück" matTooltipPosition="above"
+              (click)="lastDay()" [disabled]="!view.isDateValid(calcLastDay())">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+
+      <button *ngIf="!view.isDayMode() && app.screen.screenSize > 1"
+              mat-mini-fab color="primary" matTooltip="Montag als ersten Tag justieren" matTooltipPosition="above"
+              (click)="lastMonday()"  [disabled]="view.start.getDay() === 1">
+        <mat-icon>keyboard_return</mat-icon>
+      </button>
+
+      <button mat-mini-fab color="primary" matTooltip="Datum auswählen" matTooltipPosition="above"
+              (click)="picker.open()">
+        <mat-icon>date_range</mat-icon>
+      </button>
+
+      <button mat-mini-fab color="primary" matTooltip="Zum heutigen Tag springen" matTooltipPosition="above"
+              (click)="today()" [disabled]="isTodayInView()">
+        <mat-icon>today</mat-icon>
+      </button>
+
+      <button mat-mini-fab color="primary" matTooltip="Einen Tag vorwärts" matTooltipPosition="above"
+              (click)="nextDay()" [disabled]="!view.isDateValid(addDays(calcNextDay()))">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+
+      <button *ngIf="!view.isDayMode() && app.screen.screenSize > 1"
+              mat-mini-fab color="accent" matTooltip="Eine Woche vorwärts" matTooltipPosition="above"
+              (click)="nextWeek()" [disabled]="!view.isDateValid(addDays(calcNextWeek()))">
+        <mat-icon>skip_next</mat-icon>
+      </button>
+
+      <div class="max"></div>
+
+      <ng-container *ngIf="app.calcContentWidth() > 918">
+        <div class="flex-column min tool-box">
+          <div>Slot per Klick in den Kalender anlegen:</div>
+          <mat-radio-group  [(ngModel)]="calendar.speedSlotCreateMode" (change)="calendar.create = null">
+            <mat-radio-button [value]="tSpeedSlotCreateMode.DISABLED">AUS</mat-radio-button>
+            <mat-radio-button [value]="tSpeedSlotCreateMode.ACTIVE_15">15</mat-radio-button>
+            <mat-radio-button [value]="tSpeedSlotCreateMode.ACTIVE_30">30</mat-radio-button>
+            <mat-radio-button [value]="tSpeedSlotCreateMode.ACTIVE_60">60 Min.</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="max"></div>
+      </ng-container>
+
+      <button mat-mini-fab matTooltip="Freie Slots anlegen" matTooltipPosition="above"
+              (click)="dialog.showSlotCreateDialogWithUpdateIfRequired(null, null)">
+        <mat-icon>add</mat-icon>
+      </button>
+
+    </div>
+
+  </mat-card-actions>
+
+</mat-card>
+
+<mat-form-field style="display: none">
+  <input matInput
+         [matDatepicker]="picker"
+         [(ngModel)]="pickDateValue"
+         [min]="calendar.startTimeView"
+         [max]="calendar.endTimeView">
+  <mat-datepicker #picker touchUi (closed)="pickDate()"></mat-datepicker>
+</mat-form-field>

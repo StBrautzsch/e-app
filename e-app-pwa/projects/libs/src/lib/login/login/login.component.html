@@ -1,0 +1,15 @@
+<lib-main-container>
+
+  <div *ngIf="!app.isPlanner" class="component">
+    <lib-use-without-login></lib-use-without-login>
+  </div>
+
+  <div class="component">
+    <lib-login-input></lib-login-input>
+  </div>
+
+  <div *ngIf="!app.isPlanner" class="component">
+    <lib-create-account></lib-create-account>
+  </div>
+
+</lib-main-container>

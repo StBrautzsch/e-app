@@ -1,0 +1,66 @@
+<div mat-dialog-title>
+  <h2 *ngIf="data.slot.free">Freier Slot</h2>
+  <h2 *ngIf="!data.slot.free">Gebuchter Termin</h2>
+</div>
+
+<div mat-dialog-content>
+
+  <div class="table">
+    <div class="table-row">
+      <div class="table-cell header">Datum:</div>
+      <div class="table-cell">{{data.slot.start | date:'fullDate'}}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell header">Zeit:</div>
+      <div class="table-cell">{{data.slot.start | date:'shortTime'}} Uhr</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell header">Dauer:</div>
+      <div class="table-cell">{{data.slot.duration}} Minuten</div>
+    </div>
+  </div>
+
+  <lib-msg-div *ngIf="isPast()" type="warn">Der Termin liegt in der Vergangenheit!</lib-msg-div>
+
+  <ng-container *ngIf="!data.slot.free">
+
+    <div class="table">
+      <div class="table-row span">
+        <div class="table-cell larger">{{data.slot.mergeClientName()}}</div>
+      </div>
+      <div  *ngIf="data.slot.bookingRemark !== ''" class="table-row span">
+        <div class="table-cell">{{data.slot.bookingRemark}}</div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="table-row">
+        <div class="table-cell"><button mat-icon-button (click)="mailto()"><mat-icon>email</mat-icon></button></div>
+        <div class="table-cell" (click)="mailto()" style="cursor: pointer">{{data.slot.bookingClientMail}}</div>
+      </div>
+      <div class="table-row" *ngIf="data.slot.bookingClientTel !== ''">
+        <div class="table-cell"><button mat-icon-button (click)="tel()"><mat-icon>phone</mat-icon></button></div>
+        <div class="table-cell" (click)="tel()" style="cursor: pointer">{{data.slot.bookingClientTel}}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell">
+          <button *ngIf="data.slot.clientAuth" mat-icon-button style="cursor: default"><mat-icon>security</mat-icon></button>
+          <button *ngIf="!data.slot.clientAuth" mat-icon-button style="cursor: default"><mat-icon>warning</mat-icon></button>
+        </div>
+        <div class="table-cell">
+          <ng-container *ngIf="data.slot.clientAuth">Authentifizierte Person</ng-container>
+          <ng-container *ngIf="!data.slot.clientAuth">Nicht authentifizierte Person</ng-container>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button *ngIf="!data.slot.free" class="dialog-action" mat-stroked-button color="" (click)="iCal()">iCalendar Download</button>
+  <button class="dialog-action" mat-stroked-button color="warn" [mat-dialog-close]="true" (click)="del()">Löschen</button>
+  <button class="dialog-action" mat-stroked-button [mat-dialog-close]="true" (click)="edit()">Bearbeiten</button>
+  <button class="dialog-action" mat-stroked-button cdkFocusInitial color="primary" mat-dialog-close>Schließen</button>
+</div>

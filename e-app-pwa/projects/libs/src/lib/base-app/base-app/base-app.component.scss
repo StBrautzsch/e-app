@@ -1,0 +1,39 @@
+mat-nav-list {
+  padding-top: 0px !important;
+}
+
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+mat-toolbar {
+  position: relative;
+  z-index: 1;
+  flex-grow: 0;
+  flex-shrink: 0;
+  max-height: 50px !important;
+  min-height: 50px !important;
+}
+
+.toolbar-space {
+  flex: 1 1 auto;
+}
+
+::ng-deep main {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.account-info {
+  font-size: smaller
+}
+
+.version {
+  color: rgb(0 0 0 / 30%);
+}

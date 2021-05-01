@@ -1,0 +1,31 @@
+<a mat-list-item routerLink="/" style="height: 0;"></a>
+
+<ng-container *ngIf="!account.isAuth()">
+  <a mat-list-item routerLinkActive="active" (click)="navigate.emit(tRoutes.login)" [routerLink]="tRoutes.login"><mat-icon matListIcon>login</mat-icon>{{tTitels.login}}</a>
+  <mat-divider></mat-divider>
+</ng-container>
+
+<ng-container *ngIf="account.isAuth() && !account.user.systemUser">
+  <a mat-list-item routerLinkActive="active" (click)="navigate.emit(tRoutes.agenda)" [routerLink]="tRoutes.agenda"><mat-icon matListIcon>view_agenda</mat-icon>{{tTitels.agenda}}</a>
+  <a mat-list-item routerLinkActive="active" (click)="navigate.emit(tRoutes.calendar)" [routerLink]="tRoutes.calendar"><mat-icon matListIcon>date_range</mat-icon>{{tTitels.calendar}}</a>
+
+  <mat-divider></mat-divider>
+
+  <a mat-list-item routerLinkActive="active" (click)="navigate.emit(tRoutes.settings)" [routerLink]="tRoutes.settings"><mat-icon matListIcon>settings</mat-icon>{{tTitels.settings}}</a>
+  <a mat-list-item routerLinkActive="active" (click)="navigate.emit(tRoutes.account)" [routerLink]="tRoutes.account"><mat-icon matListIcon>account_circle</mat-icon>{{tTitels.account}}</a>
+  <mat-divider></mat-divider>
+</ng-container>
+
+<ng-container *ngIf="account.isAuth() && account.castPlanner().isAdmin()">
+  <a mat-list-item routerLinkActive="active" (click)="navigate.emit(tRoutes.admin)" [routerLink]="tRoutes.admin"><mat-icon matListIcon>build</mat-icon>{{tTitels.admin}}</a>
+  <mat-divider></mat-divider>
+</ng-container>
+
+
+<a mat-list-item routerLinkActive="active" (click)="navigate.emit(tRoutes.share)" [routerLink]="tRoutes.share"><mat-icon matListIcon>share</mat-icon>{{tTitels.share}}</a>
+<a mat-list-item routerLinkActive="active" (click)="navigate.emit(tRoutes.info)" [routerLink]="tRoutes.info"><mat-icon matListIcon>info_outline</mat-icon>{{tTitels.info}}</a>
+
+<ng-container *ngIf="account.isAuth()">
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLinkActive="active" (click)="navigate.emit(tRoutes.login)"><mat-icon matListIcon>logout</mat-icon>{{tTitels.logout}}</a>
+</ng-container>

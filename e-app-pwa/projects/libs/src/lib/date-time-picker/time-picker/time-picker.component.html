@@ -1,0 +1,32 @@
+<div class="flex-row">
+
+  <div class="min">
+    <mat-form-field appearance="fill" class="hour">
+      <mat-label>Stunde</mat-label>
+      <mat-select [(value)]="hour" (valueChange)="hourModelChange.emit(hour)">
+        <mat-option *ngFor="let h of hours" [value]="h">{{h}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="min">
+    <mat-form-field appearance="fill" class="hour">
+      <mat-label>Minute</mat-label>
+      <mat-select [(value)]="min" (valueChange)="minModelChange.emit(min)">
+        <mat-option *ngFor="let m of minutes" [value]="m">{{m | number:'2.0'}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="min">
+    <mat-button-toggle-group #group="matButtonToggleGroup">
+      <mat-button-toggle value="add" (click)="group.value=0; add()" matTooltip="15 Min. vorwärts">
+        <mat-icon>add</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="remove"(click)="group.value=0; sub()" matTooltip="15 Min. zurück">
+        <mat-icon>remove</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+</div>

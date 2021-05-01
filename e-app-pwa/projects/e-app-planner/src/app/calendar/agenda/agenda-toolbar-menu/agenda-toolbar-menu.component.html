@@ -1,0 +1,24 @@
+<ng-container *ngIf="app.page === app.titles.agenda">
+
+  <button mat-menu-item
+          [disabled]="calendar.agendaMode === tMode.All"
+          (click)="changeAgenda(tMode.All)">
+    Alle Ereignisse anzeigen
+  </button>
+
+  <button mat-menu-item
+          [disabled]="calendar.agendaMode === tMode.Booked"
+          (click)="changeAgenda(tMode.Booked)">
+    Nur gebuchte Termine anzeigen
+  </button>
+
+  <button mat-menu-item
+          [disabled]="calendar.agendaMode === tMode.Free"
+          (click)="changeAgenda(tMode.Free)">
+    Nur freie Slots anzeigen
+  </button>
+
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="calendar.updateSlotsAndCalendar(view.getPlannerSettings().weeksPast, view.getPlannerSettings().weeksFuture)" >Aktualisieren</button>
+
+</ng-container>

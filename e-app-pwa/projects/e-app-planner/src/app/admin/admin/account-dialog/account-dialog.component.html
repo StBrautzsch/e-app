@@ -1,0 +1,132 @@
+<div mat-dialog-title>
+  <h2 *ngIf="data.new">Account anlegen</h2>
+  <h2 *ngIf="!data.new">{{data.account.mergeName()}}</h2>
+  <mat-divider></mat-divider>
+</div>
+
+<div mat-dialog-content>
+
+  <ng-container *ngIf="!data.new">
+    <div class="table">
+      <div class="table-row">
+        <div class="table-cell header">Account-Id:</div>
+        <div class="table-cell">{{data.account.id}}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header">Letzter Kontakt:</div>
+        <div class="table-cell">
+          <ng-container *ngIf="data.account.lastContact.getTime() === 0; else contact">-</ng-container>
+          <ng-template #contact>{{data.account.lastContact | date:'longDate'}}</ng-template>
+        </div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header">Gebuchte Termine:</div>
+        <div class="table-cell">{{data.account.bookedAppointments}}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header">Freie Slots:</div>
+        <div class="table-cell">{{data.account.freeSlots}}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header">Gebuchte Slots:</div>
+        <div class="table-cell">{{data.account.bookedSlots}}</div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <p></p>
+  </ng-container>
+
+  <form class="flex-column">
+
+    <lib-msg-div type="warn"  *ngIf="data.account.accountVerificationCode">
+      <p>Der Account wurde vom Nutzer noch nicht verifiziert.</p>
+      <button mat-stroked-button mat-dialog-close
+              [mat-dialog-close]="tAccountDialogResult.MANUAL_VERIFICATION">
+        Manuelle Verifizierung
+      </button>
+    </lib-msg-div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Vorname</mat-label>
+      <input matInput placeholder="Maxi" #preNameField="ngModel" name="preNameField" [(ngModel)]="preName" required tabindex="1">
+      <mat-error *ngIf="preNameField.invalid">Bitte Vorname eingeben!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nachname</mat-label>
+      <input matInput placeholder="Musterfrau" #nameField="ngModel" name="nameField" [(ngModel)]="name" required tabindex="2">
+      <mat-error *ngIf="nameField.invalid">Bitte Nachname eingeben!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefonnummer</mat-label>
+      <input matInput placeholder="0123 123456" #telField="ngModel" name="telField" [(ngModel)]="tel" tabindex="3">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>E-Mail-Adresse</mat-label>
+      <input matInput placeholder="example@example.com" #mailField="ngModel" name="mail" [(ngModel)]="mail" required email tabindex="4">
+      <mat-error *ngIf="mailField.invalid">Bitte gültige E-Mail-Adresse eingeben!</mat-error>
+    </mat-form-field>
+
+    <lib-msg-div *ngIf="data.new">
+      Der Nutzer erhält eine E-Mail zur Verifizierung und Festlegung des Passworts.
+    </lib-msg-div>
+
+    <lib-msg-div type="warn" *ngIf="data.account.mailVerificationCode || data.account.mailChange">
+      <p>Es läuft ein Verifizierungs-Prozess zur Änderung Ihrer E-Mail-Adresse auf {{data.account.mailChange}}.</p>
+      <button mat-stroked-button mat-dialog-close
+              [mat-dialog-close]="tAccountDialogResult.CANCEL_MAIL_CHANGE">
+        Verifizierung Abbrechen
+      </button>
+    </lib-msg-div>
+
+    <mat-divider></mat-divider><p></p>
+
+    <div class="flex-row margin">
+      <mat-radio-group name="role" [(ngModel)]="role" >
+        <mat-radio-button [value]="tAccountRole.CLIENT" tabindex="5">Klient</mat-radio-button><br>
+        <mat-radio-button [value]="tAccountRole.PLANNER" tabindex="6">Terminplaner und Klient</mat-radio-button><br>
+        <mat-radio-button [value]="tAccountRole.ADMIN" tabindex="7">Admin, Terminplaner und Klient</mat-radio-button><br>
+      </mat-radio-group>
+    </div>
+
+    <mat-slide-toggle name="bookingActive" tabindex="8"
+                      [(ngModel)]="bookingActive"
+                      [disabled]="role === tAccountRole.CLIENT">
+      Buchung durch Klienten aktiv
+    </mat-slide-toggle>
+
+    <mat-slide-toggle name="active" tabindex="9"
+                      [(ngModel)]="active">
+      Account aktiv
+    </mat-slide-toggle>
+
+    <ng-container *ngIf="!data.new">
+      <mat-divider></mat-divider><p></p>
+
+      <p>
+        <button mat-stroked-button mat-dialog-close color="warn"
+                [mat-dialog-close]="tAccountDialogResult.DELETE" [disabled]="!del">
+          Account Löschen
+        </button>
+      </p>
+
+      <p *ngIf="!del">
+        Der Account kann erst gelöscht werden, wenn keine Ereignisse mehr gespeichert sind.
+      </p>
+
+    </ng-container>
+
+  </form>
+
+  <p></p>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button class="dialog-action" mat-stroked-button cdkFocusInitial color="" mat-dialog-close tabindex="11">Abbrechen</button>
+  <button class="dialog-action" mat-stroked-button color="primary" tabindex="10" [mat-dialog-close]="tAccountDialogResult.SAVE"
+          [disabled]="nameField.invalid || preNameField.invalid || mailField.invalid || !isChange()"
+          (click)="save()">Speichern</button>
+</div>

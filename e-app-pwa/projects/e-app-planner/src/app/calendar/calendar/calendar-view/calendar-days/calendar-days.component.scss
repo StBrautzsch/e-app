@@ -1,0 +1,37 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+.even {
+  background: #cecbeb;
+}
+
+.odd {
+  background: #e2e0f3;
+}
+
+.even-saturday {
+  background: #bebcdb;
+}
+
+.odd-saturday {
+  background: #e2e0f3;
+}
+
+.even-sunday {
+  background: #b9b7d0;
+}
+
+.odd-sunday {
+  background: #e2e0f3;
+}
+
+.past {
+  opacity: 0.5;
+}
+
+.hour-border {
+  margin-top: 1px;
+}
+
+.half-hour-border {
+  margin-top: 1px;
+}

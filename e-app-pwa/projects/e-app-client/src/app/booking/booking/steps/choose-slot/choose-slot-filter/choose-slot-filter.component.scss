@@ -1,0 +1,47 @@
+@import "projects/libs/src/lib/styles/global_styles";
+@import "projects/libs/src/lib/styles/ngx-slider";
+
+.mark {
+  color: $accent-color;
+}
+
+.primary {
+  color: $primary-color;
+}
+
+.slider {
+  padding-top: 8px;
+}
+
+::ng-deep mat-list-option .mat-list-base .mat-list-item.mat-2-line, .mat-list-base .mat-list-option.mat-2-line {
+  height: 56px;
+}
+
+:host ::ng-deep mat-list-option .mat-list-item-content {
+  padding: 0 !important;
+}
+
+:host ::ng-deep mat-list-option .mat-list-text {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-tab-label {
+  height: 40px !important;
+  width: 40px !important;
+  min-width: 40px !important;
+}
+
+.weekday-checkbox-label {
+  margin: 0 0 5px 0;
+  width: 30px;
+}
+
+mat-form-field {
+  padding-top: 4px;
+}
+
+.filter-height {
+  height: 63px;
+  overflow: hidden;
+  padding-top: 4px;
+}

@@ -1,0 +1,7 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+.active {
+  font-weight: bold;
+  color: $primary-color !important;
+  background-color: rgba(#3f51b5, .12) !important;
+}

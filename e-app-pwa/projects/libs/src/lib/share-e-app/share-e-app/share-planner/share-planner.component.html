@@ -1,0 +1,34 @@
+<mat-card>
+
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon>share</mat-icon>
+    </div>
+    <mat-card-title>{{shareTitle}} teilen</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <h3>Geben Sie den {{shareTitle}} an andere weiter!</h3>
+
+    <ng-container *ngIf="isShareSupported">
+      <lib-divider heightAfter="20"></lib-divider>
+
+      <p><button mat-raised-button color="primary"
+              (click)="share()"
+              [disabled]="!isShareSupported">
+        {{shareTitle}} teilen
+      </button></p>
+      <p *ngIf="!isShareSupported">Ihr System unterstützt die Teilen-Funktion leider nicht!</p>
+    </ng-container>
+
+    <lib-divider heightAfter="20"></lib-divider>
+
+    <h3>Sie können die App ganz einfach über die URL weitergeben:</h3>
+    <h3><qr-code [value]="url" [size]="120" [padding]="0" ></qr-code></h3>
+    <h3>{{url}}</h3>
+    <button mat-raised-button color="primary" [cdkCopyToClipboard]="url">URL in Zwischenablage kopieren</button>
+
+  </mat-card-content>
+
+</mat-card>

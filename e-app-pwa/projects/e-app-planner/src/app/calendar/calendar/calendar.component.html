@@ -1,0 +1,27 @@
+<ng-container *ngIf="!calendar.updating">
+  <div class="container" [style.max-width.px]="view.containerWidth + 33">
+    <mat-card>
+      <div cdkDropListGroup>
+
+        <app-calendar-view [days]="view.days"
+                           [calendarHeight]="app.screen.screenHeight - 180">
+        </app-calendar-view>
+
+      </div>
+    </mat-card>
+
+  </div>
+
+<!--  <button mat-fab class="action-button" (click)="dialog.showSlotCreateDialogWithUpdateIfRequired(null, null)" matTooltip="Freie Slots anlegen" matTooltipPosition="above">-->
+<!--    <mat-icon>add</mat-icon>-->
+<!--  </button>-->
+
+<!--  <app-slot-create-toolbar *ngIf="showSlotCreateToolbar(910)"></app-slot-create-toolbar>-->
+
+<!--  <app-info-toolbar *ngIf="showSlotCreateToolbar(910)"></app-info-toolbar>-->
+
+  <app-calendar-navigation></app-calendar-navigation>
+
+</ng-container>
+
+<lib-page-spinner *ngIf="calendar.updating"></lib-page-spinner>

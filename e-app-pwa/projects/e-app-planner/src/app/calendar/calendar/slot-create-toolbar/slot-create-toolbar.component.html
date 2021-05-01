@@ -1,0 +1,8 @@
+<mat-card [style.margin-left.px]="calcNavOffset()">
+  <mat-card-actions class="nav-card-actions">
+    <button mat-mini-fab (click)="setMode(tSpeedSlotCreateMode.DISABLED)" [color]="getColor(tSpeedSlotCreateMode.DISABLED)" matTooltip="Schnelles Anlagen von Slots deaktivieren" matTooltipPosition="above"><mat-icon>clear</mat-icon></button>
+    <button mat-mini-fab (click)="setMode(tSpeedSlotCreateMode.ACTIVE_15)" [color]="getColor(tSpeedSlotCreateMode.ACTIVE_15)" matTooltip="Per Klick im Kalender einen Slot von 15 Min. anlegen" matTooltipPosition="above">15</button>
+    <button mat-mini-fab (click)="setMode(tSpeedSlotCreateMode.ACTIVE_30)" [color]="getColor(tSpeedSlotCreateMode.ACTIVE_30)" matTooltip="Per Klick im Kalender einen Slot von 30 Min. anlegen" matTooltipPosition="above">30</button>
+    <button mat-mini-fab (click)="setMode(tSpeedSlotCreateMode.ACTIVE_60)" [color]="getColor(tSpeedSlotCreateMode.ACTIVE_60)" matTooltip="Per Klick im Kalender einen Slot von 60 Min. anlegen" matTooltipPosition="above">60</button>
+  </mat-card-actions>
+</mat-card>

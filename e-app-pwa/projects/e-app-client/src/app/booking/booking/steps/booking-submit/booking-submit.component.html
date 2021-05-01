@@ -1,0 +1,63 @@
+<form class="main" [style.max-height.px]="app.screen.screenHeight - 200" [formGroup]="formGroup">
+
+  <h2>Buchung</h2>
+  <div class="table" *ngIf="!!booking.selectedPlannerPerson && !! booking.selectedSlot">
+    <div class="table-row">
+      <div class="table-cell header">Person:</div>
+      <div class="table-cell">{{booking.selectedPlannerPerson.mergeName()}}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell header">Termin:</div>
+      <div class="table-cell">{{booking.selectedSlot.start | date: 'EEEEEE, dd.MM.y, HH:mm'}} Uhr ({{booking.selectedSlot.duration}} Min.)</div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!account.isAuth()">
+    <h2>Kontaktdaten</h2>
+    <div class="table">
+      <div class="table-row">
+        <div class="table-cell header">Name:</div>
+        <div class="table-cell">{{booking.inputDataName}}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header">E-Mail-Adresse:</div>
+        <div class="table-cell">{{booking.inputDataMail}}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header">Telefonnummer:</div>
+        <div class="table-cell">{{booking.inputDataTel}}</div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="flex-column">
+    <mat-form-field class="mat-form-field-margin">
+      <mat-label>Kommentar</mat-label>
+      <input matInput [formControlName]="FORMNAME_COMMENT" (change)="setData()">
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="!account.isAuth()">
+    <div class="table">
+      <div class="table-row">
+        <div class="table-cell"><mat-checkbox [formControlName]="FORMNAME_CHECK"></mat-checkbox></div>
+        <div class="table-cell">
+          Ja, ich habe die
+          <a (click)="app.dialog.showPrivacyPolicyDialog();">Datenschutzbestimmungen</a>
+          sowie die
+          <a (click)="app.dialog.showTermsOfUseDialog();">Nutzungsbedingungen</a>
+          gelesen und verstanden und akzeptiere die darin enthaltenen Bedingungen.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button mat-raised-button matStepperPrevious>Zurück</button>
+    <button mat-raised-button type="submit" color="primary" matStepperNext [disabled]="!formGroup.valid"
+            (click)="bookingSubmit()">
+      Termin buchen
+    </button>
+  </div>
+
+</form>

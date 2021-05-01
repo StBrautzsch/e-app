@@ -1,0 +1,17 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+mat-radio-button {
+  margin: 5px 0 5px 0;
+}
+
+::ng-deep .mat-radio-label {
+  white-space: normal !important;
+}
+
+.weekday-checkbox-label {
+  width: 30px;
+}
+
+.margin {
+  margin-left: 10px;
+}

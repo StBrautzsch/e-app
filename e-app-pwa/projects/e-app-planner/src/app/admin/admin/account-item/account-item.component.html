@@ -1,0 +1,29 @@
+<div class="flex-row item"
+     (click)="admin.showAccountEditDialog(item)"
+     (pointerenter)="mark = true" (pointerleave)="mark = false"
+     [ngClass]="{'mark': mark}">
+
+  <div class="min center-left">
+    <button mat-icon-button  *ngIf="item.clientActive && !item.plannerActive && !item.admin">
+      <mat-icon>book_online</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="item.plannerActive && !item.admin">
+      <mat-icon>date_range</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="item.admin">
+      <mat-icon>build</mat-icon>
+    </button>
+  </div>
+
+  <div class="max center-left">
+    {{item.name}}, {{item.preName}}<br>
+    {{item.mail}}
+  </div>
+
+  <div *ngIf="!item.isActive()" class="min center-left">
+    <button mat-icon-button>
+      <mat-icon>remove_circle_outline</mat-icon>
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,16 @@
+mat-card {
+  position: fixed;
+  bottom: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 192px;
+  min-width: 192px;
+}
+
+button {
+  margin: 0 2px 0 2px;
+}
+
+.nav-card-actions {
+  padding: 0;
+}

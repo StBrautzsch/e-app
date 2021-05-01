@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div th:fragment="slot">
+        <table>
+            <tr>
+                <td class="table-cell header">Datum:</td>
+                <td class="table-cell"><span th:text="${date}"></span></td>
+            </tr>
+            <tr>
+                <td class="table-cell header">Zeit:</td>
+                <td class="table-cell"><span th:text="${time}"></span> Uhr</td>
+            </tr>
+            <tr>
+                <td class="table-cell header">Dauer:</td>
+                <td class="table-cell"><span th:text="${duration}"></span> Minuten</td>
+            </tr>
+            <tr>
+                <td class="table-cell header">Kommentar:</td>
+                <td class="table-cell"><span th:text="${comment}"></span></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

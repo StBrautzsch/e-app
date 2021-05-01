@@ -1,0 +1,5 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+::ng-deep .white-space-normal .mat-checkbox-layout {
+  white-space: normal !important;
+}

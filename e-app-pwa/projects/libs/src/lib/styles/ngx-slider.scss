@@ -1,0 +1,42 @@
+@import "colors";
+
+::ng-deep .slider .ngx-slider {
+
+  .ngx-slider-bar {
+    background: $gray-color;
+    height: 2px;
+  }
+
+  .ngx-slider-bar-wrapper {
+    padding-top: 10px;
+  }
+  .ngx-slider-selection {
+    background: $primary-color;
+  }
+
+  .ngx-slider-bubble {
+    padding: 0 0 5px 0;
+    color: black;
+    font-size: unset;
+  }
+
+  .ngx-slider-bubble.ngx-slider-limit {
+    display: none;
+  }
+
+  .ngx-slider-pointer {
+    background-color: $accent-color;
+    height: 16px;
+    width: 16px;
+    border: 0;
+  }
+
+  .ngx-slider-pointer:after {
+    display: none;
+  }
+
+  .ngx-slider-limit {
+    color: black;
+  }
+
+}

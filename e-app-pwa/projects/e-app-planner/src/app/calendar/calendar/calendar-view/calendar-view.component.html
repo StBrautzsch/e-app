@@ -1,0 +1,23 @@
+<cdk-virtual-scroll-viewport [itemSize]="view.slotWidthData" [style.height.px]="calendarHeight" orientation="horizontal">
+
+  <div [style.width.px]="view.containerWidth">
+
+    <app-day-label [days]="days"></app-day-label>
+
+    <cdk-virtual-scroll-viewport [itemSize]="view.slotHeight" [style.height.px]="calendarHeight - 68">
+
+      <div class="flex-row">
+
+        <app-hour-label marginLeft="0" [marginRight]="view.margin" [grid]="true"></app-hour-label>
+
+        <app-calendar-days [days]="days"></app-calendar-days>
+
+        <app-hour-label *ngIf="!view.isDayMode()" [marginLeft]="view.margin" marginRight="0"  [grid]="false"></app-hour-label>
+
+      </div>
+
+    </cdk-virtual-scroll-viewport>
+
+  </div>
+
+</cdk-virtual-scroll-viewport>

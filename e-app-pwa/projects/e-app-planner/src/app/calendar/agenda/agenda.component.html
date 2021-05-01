@@ -1,0 +1,43 @@
+<ng-container *ngIf="!calendar.updating">
+
+  <lib-main-container maxWidth="800">
+
+    <mat-card>
+
+      <cdk-virtual-scroll-viewport *ngIf="calendar.agenda.length; else noContent" itemSize="50" [style.height.px]="app.screen.screenHeight - 108">
+
+        <ng-container *cdkVirtualFor="let item of calendar.agenda; let i = index; let f = first">
+
+          <lib-agenda-header-item *ngIf="!item.isItem()" [date]="item.date" [newMonth]="item.newMonth"></lib-agenda-header-item>
+
+          <app-agenda-slot-item *ngIf="item.isItem()" [item]="item"></app-agenda-slot-item>
+
+        </ng-container>
+
+      </cdk-virtual-scroll-viewport>
+
+      <ng-template #noContent>
+        <lib-msg-div *ngIf="calendar.agendaMode === tMode.All" type="warn">
+          <p>Sie haben keine bevorstehenden Ereignisse!</p>
+          <p>Legen Sie freie Slots an, damit diese von Klienten gebucht werden können.</p>
+        </lib-msg-div>
+        <lib-msg-div *ngIf="calendar.agendaMode === tMode.Free" type="warn">
+          <p>Sie haben keine freien Slots mehr!</p>
+          <p>Legen Sie freie Slots an, damit diese von Klienten gebucht werden können.</p>
+        </lib-msg-div>
+        <lib-msg-div *ngIf="calendar.agendaMode === tMode.Booked">
+          Sie haben keine bevorstehenden Termine!
+        </lib-msg-div>
+      </ng-template>
+
+    </mat-card>
+
+  </lib-main-container>
+
+  <button mat-fab class="action-button" (click)="dialog.showSlotCreateDialogWithUpdateIfRequired(null, null)" matTooltip="Freie Slots anlegen" matTooltipPosition="above">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</ng-container>
+
+<lib-page-spinner *ngIf="calendar.updating"></lib-page-spinner>

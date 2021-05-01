@@ -1,0 +1,36 @@
+<div class="flex-row">
+
+  <div class="min">
+    <mat-form-field appearance="fill" class="date">
+      <mat-label>Datum</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="date" [min]="minDate" [max]="maxDate" (dateChange)="dateModelChange.emit(date)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker [touchUi]="app.screen.isSmall()"></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="min">
+    <mat-button-toggle-group #group="matButtonToggleGroup">
+      <mat-button-toggle value="add" (click)="group.value=0; addDay()" matTooltip="Einen Tag vorwärts">
+        <mat-icon>add</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="remove"(click)="group.value=0; subDay()" matTooltip="Einen Tag zurück">
+        <mat-icon>remove</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div *ngIf="!app.screen.isSmall()" class="min" style="margin-left: 20px">
+    <lib-time-picker [hour]="hour" (hourModelChange)="hour = $event; hourModelChange.emit(hour)"
+                     [min]="min" (minModelChange)="min = $event; minModelChange.emit(min)"
+                     (addDay)="addDay()" (subDay)="subDay()">
+    </lib-time-picker>
+  </div>
+
+</div>
+
+<lib-time-picker *ngIf="app.screen.isSmall()"
+                 [hour]="hour" (hourModelChange)="hour = $event; hourModelChange.emit(hour)"
+                 [min]="min" (minModelChange)="min = $event; minModelChange.emit(min)"
+                 (addDay)="addDay()" (subDay)="subDay()">
+</lib-time-picker>

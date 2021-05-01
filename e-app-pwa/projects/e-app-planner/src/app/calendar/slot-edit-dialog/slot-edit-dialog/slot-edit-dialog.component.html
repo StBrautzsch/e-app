@@ -1,0 +1,49 @@
+<div mat-dialog-title>
+  <h2 *ngIf="data.slot.free">Freien Slot bearbeiten</h2>
+  <h2 *ngIf="!data.slot.free">Gebuchten Termin bearbeiten</h2>
+  <mat-divider></mat-divider>
+</div>
+
+<div mat-dialog-content>
+
+  <h2>Ursprünglicher Termin:</h2>
+  <div class="flex-row margin">
+    <p>{{data.slot.start | date:'fullDate'}}, {{data.slot.start | date:'shortTime'}} Uhr ({{data.slot.duration}} Minuten)</p>
+  </div>
+
+  <h2>Start:</h2>
+  <div class="flex-row margin">
+    <lib-date-time-picker #startPicker
+                          [date]="startDate" (dateModelChange)="startDate = $event"
+                          [hour]="hour" (hourModelChange)="hour = $event"
+                          [min]="min" (minModelChange)="min = $event"
+                          [minDate]="minDate" [maxDate]="data.calendar.endTimeView">
+    </lib-date-time-picker>
+  </div>
+  <div class="flex-row margin"><p>{{startPicker.calcDateTime() | date:'fullDate'}}, {{startPicker.calcDateTime() | date:'shortTime'}} Uhr</p></div>
+
+  <h2>Dauer:</h2>
+  <div class="flex-row margin">
+    <lib-duration-picker #durationPicker [duration]="duration" (modelChange)="duration = $event"></lib-duration-picker>
+  </div>
+  <div class="flex-row margin"><p>{{durationPicker.calcDuration()}} Minuten</p></div>
+
+  <ng-container *ngIf="!data.slot.free">
+    <lib-msg-div type="warn">Dieser Termin ist von {{data.slot.mergeClientName()}} gebucht!</lib-msg-div>
+    <p class="margin"><mat-checkbox class="white-space-normal" [(ngModel)]="data.notify">{{data.slot.mergeClientName()}} über die Veränderung benachrichtigen</mat-checkbox></p>
+  </ng-container>
+
+  <lib-msg-div *ngIf="isPastOld() && !data.slot.free" type="warn">Der Termin liegt in der Vergangenheit!</lib-msg-div>
+  <lib-msg-div *ngIf="isPastNew() && !isPastOld() && !data.slot.free" type="warn">Der neue Termin liegt in der Vergangenheit!</lib-msg-div>
+
+  <lib-msg-div *ngIf="!check()" type="danger">
+    <ng-container *ngIf="(hourMinToMin() <= 0) || (data.slot.free && isPastNew()); else notFree">Bitte eine gültige Zeitspanne angeben!</ng-container>
+    <ng-template #notFree>Der ausgewählte Zeitraum ist bereits belegt!</ng-template>
+  </lib-msg-div>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button class="dialog-action" mat-stroked-button cdkFocusInitial color="" mat-dialog-close>Abbrechen</button>
+  <button class="dialog-action" mat-stroked-button color="primary" [disabled]="!check() || !isChange()" (click)="save()" mat-dialog-close>Speichern</button>
+</div>

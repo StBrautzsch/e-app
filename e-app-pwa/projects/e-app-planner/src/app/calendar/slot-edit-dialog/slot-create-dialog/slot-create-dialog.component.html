@@ -1,0 +1,81 @@
+<div mat-dialog-title>
+  <h2>Freie Slots anlegen</h2>
+  <mat-divider></mat-divider>
+</div>
+
+<div mat-dialog-content>
+
+  <h2>Start:</h2>
+  <div class="flex-row margin">
+    <lib-date-time-picker #startPicker
+                          [date]="startDate" (dateModelChange)="startDate = $event; refreshDuration()"
+                          [hour]="hour" (hourModelChange)="hour = $event; refreshDuration()"
+                          [min]="min" (minModelChange)="min = $event; refreshDuration()"
+                          [minDate]="minDate" [maxDate]="data.calendar.endTimeView">
+    </lib-date-time-picker>
+  </div>
+  <div class="flex-row margin"><p>{{startPicker.calcDateTime() | date:'fullDate'}}, {{startPicker.calcDateTime() | date:'shortTime'}} Uhr</p></div>
+
+  <h2>Modus:</h2>
+  <div class="flex-row margin">
+    <mat-radio-group [(ngModel)]="slotMode">
+      <mat-radio-button [value]="tSlotMode.ONE">Einen einzelnen Slot erstellen</mat-radio-button><br>
+      <mat-radio-button [value]="tSlotMode.MULTIPLE">Zeitraum in mehrere Slots aufteilen</mat-radio-button><br>
+<!--      <mat-radio-button disabled [value]="tSlotMode.SERIES" matTooltip="Dieses Feature ist noch nicht implementiert">Serie von Slots erstellen</mat-radio-button>-->
+    </mat-radio-group>
+  </div>
+  <div class="flex-row margin"><p></p></div>
+
+  <ng-container *ngIf="slotMode === tSlotMode.ONE">
+    <h2>Dauer:</h2>
+    <div class="flex-row margin">
+      <lib-duration-picker #durationPicker [duration]="duration" (modelChange)="duration = $event"></lib-duration-picker>
+    </div>
+    <div class="flex-row margin"><p>{{durationPicker.calcDuration()}} Minuten</p></div>
+  </ng-container>
+
+  <ng-container *ngIf="slotMode === tSlotMode.MULTIPLE">
+    <h2>Ende:</h2>
+    <div class="flex-row margin">
+      <lib-date-time-picker #endPicker
+                            [date]="endDate" (dateModelChange)="endDate = $event; refreshDuration()"
+                            [hour]="hourEnd" (hourModelChange)="hourEnd = $event; refreshDuration()"
+                            [min]="minEnd" (minModelChange)="minEnd = $event; refreshDuration()"
+                            [minDate]="minDate">
+      </lib-date-time-picker>
+    </div>
+    <div class="flex-row margin"><p>{{endPicker.calcDateTime() | date:'fullDate'}}, {{endPicker.calcDateTime() | date:'shortTime'}} Uhr ({{hourMinToMin()}} Minuten)</p></div>
+  </ng-container>
+
+  <lib-msg-div *ngIf="!check()" type="danger">
+    <ng-container *ngIf="((hourMinToMin() <= 0) || isPastNew()); else notFree">Bitte eine gültige Zeitspanne angeben!</ng-container>
+    <ng-template #notFree>Der ausgewählte Zeitraum ist bereits belegt!</ng-template>
+  </lib-msg-div>
+
+  <ng-container *ngIf="slotMode === tSlotMode.MULTIPLE">
+    <h2>Dauer der Einzelslots und Pausen:</h2>
+    <div class="margin" [ngClass]="{'flex-column': app.screen.isSmall(), 'flex-row': !app.screen.isSmall()}">
+      <div>
+        <lib-duration-picker #durationPickerSlot [duration]="durationSlot" (modelChange)="durationSlot = $event"></lib-duration-picker>
+      </div>
+      <div [ngClass]="{'margin': !app.screen.isSmall()}">
+        <mat-form-field appearance="fill">
+          <mat-label>Pause</mat-label>
+          <mat-select [(value)]="slotBreak">
+            <mat-option [value]="0">keine</mat-option>
+            <mat-option [value]="15">15 Min.</mat-option>
+            <mat-option [value]="30">30 Min.</mat-option>
+            <mat-option [value]="60">1 Std.</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </ng-container>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button class="dialog-action" mat-stroked-button cdkFocusInitial color="" mat-dialog-close>Abbrechen</button>
+  <button class="dialog-action" mat-stroked-button color="primary" [disabled]="!check()" (click)="save()" mat-dialog-close>Speichern</button>
+</div>

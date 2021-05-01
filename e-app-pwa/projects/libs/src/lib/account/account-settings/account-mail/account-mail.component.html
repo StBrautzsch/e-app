@@ -1,0 +1,50 @@
+<mat-expansion-panel>
+
+  <mat-expansion-panel-header>
+    <mat-panel-title><mat-icon>email</mat-icon></mat-panel-title>
+    <mat-panel-description>E-Mail-Adresse ändern</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <form *ngIf="!account.user.isMailChanging()" class="flex-column">
+
+    <lib-msg-div type="warn">
+      Die Änderung der E-Mail-Adresse erfordert eine Verifizierung. Erst danach ist die neue Adresse gültig.
+      Sie erhalten dazu eine E-Mail mit weiteren Informationen an die neue Adresse.
+    </lib-msg-div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>E-Mail-Adresse</mat-label>
+      <input matInput placeholder="example@example.com" #mailField="ngModel" name="mail" [(ngModel)]="mail" required email tabindex="1">
+      <mat-error *ngIf="mailField.invalid">Bitte gültige E-Mail-Adresse eingeben!</mat-error>
+    </mat-form-field>
+
+    <mat-action-row>
+      <button type="reset" mat-raised-button tabindex="3"
+              (click)="reset()"
+              [disabled]="!isChange()">
+        Abbrechen
+      </button>
+      <button type="submit" class="flex-end" mat-raised-button color="primary" tabindex="2"
+              (click)="account.saveUserMailChange(mail)"
+              [disabled]="mailField.invalid || !isChange()">
+        E-Mail-Adresse ändern
+      </button>
+    </mat-action-row>
+  </form>
+
+  <form *ngIf="account.user.isMailChanging()" class="flex-column">
+
+    <lib-msg-div type="warn">
+      Es läuft ein Verifizierungs-Prozess zur Änderung Ihrer E-Mail-Adresse von {{account.user.mail}} auf {{account.user.mailChange}}.
+      Bitte beachten Sie die Informationen zur Verifizierung in der E-Mail, welche an die neue Adresse gesendet wurde!
+    </lib-msg-div>
+
+    <mat-action-row>
+      <button type="button" class="flex-end" mat-raised-button color="warn"
+              (click)="account.cancelUserMailChange()">
+        Änderung der E-Mail-Adresse abbrechen
+      </button>
+    </mat-action-row>
+  </form>
+
+</mat-expansion-panel>

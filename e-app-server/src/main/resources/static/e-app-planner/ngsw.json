@@ -1,0 +1,101 @@
+{
+  "configVersion": 1,
+  "timestamp": 1618650470966,
+  "index": "/e-app-planner/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/e-app-planner/index.html",
+        "/e-app-planner/main.883da972cd0e7dc6b1fa.js",
+        "/e-app-planner/manifest.webmanifest",
+        "/e-app-planner/polyfills.9ebcc2c81cebf53c3509.js",
+        "/e-app-planner/runtime.0e49e2b53282f40c8925.js",
+        "/e-app-planner/styles.d0c7e972890a218c0630.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/e-app-planner/MaterialIcons-Regular.1811d381e9d3e8334394.woff",
+        "/e-app-planner/MaterialIcons-Regular.45c4a4612e18a3255f51.ttf",
+        "/e-app-planner/MaterialIcons-Regular.56395d5d012de45e4955.eot",
+        "/e-app-planner/MaterialIcons-Regular.fa3334fe030aed8470dd.woff2",
+        "/e-app-planner/assets/icons/icon-120.png",
+        "/e-app-planner/assets/icons/icon-120i.png",
+        "/e-app-planner/assets/icons/icon-128.png",
+        "/e-app-planner/assets/icons/icon-144.png",
+        "/e-app-planner/assets/icons/icon-152.png",
+        "/e-app-planner/assets/icons/icon-152i.png",
+        "/e-app-planner/assets/icons/icon-180.png",
+        "/e-app-planner/assets/icons/icon-180i.png",
+        "/e-app-planner/assets/icons/icon-192.png",
+        "/e-app-planner/assets/icons/icon-384.png",
+        "/e-app-planner/assets/icons/icon-512.png",
+        "/e-app-planner/assets/icons/icon-52.png",
+        "/e-app-planner/assets/icons/icon-72.png",
+        "/e-app-planner/assets/icons/icon-96.png",
+        "/e-app-planner/favicon.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/e-app-planner/MaterialIcons-Regular.1811d381e9d3e8334394.woff": "fd35aef76e3df58554d92457fb41f0f6a5dd4f01",
+    "/e-app-planner/MaterialIcons-Regular.45c4a4612e18a3255f51.ttf": "ab5cb381b64844e1ae426cde4064074fac76c567",
+    "/e-app-planner/MaterialIcons-Regular.56395d5d012de45e4955.eot": "da7bf13623178411bd7960b7c2e6ff8767ceac39",
+    "/e-app-planner/MaterialIcons-Regular.fa3334fe030aed8470dd.woff2": "0bec0581767ccb3256ca805b1904031ac0147f07",
+    "/e-app-planner/assets/icons/icon-120.png": "947e8ca47930ae011543f5b44048b784c0d7640e",
+    "/e-app-planner/assets/icons/icon-120i.png": "bc9225fc72404b81c58fd485dec4b20cdb1a69f4",
+    "/e-app-planner/assets/icons/icon-128.png": "0b4f307e7f15743cc465d150faca5297ecf39ca4",
+    "/e-app-planner/assets/icons/icon-144.png": "51b70fd0d1499622d40428cd00fb9acb2413eb66",
+    "/e-app-planner/assets/icons/icon-152.png": "bfafd17af45f94c7edc14d591fb19ef98ff69ac4",
+    "/e-app-planner/assets/icons/icon-152i.png": "bdb71db2f4a38d0a9b08e4d75e99984106f0c7a1",
+    "/e-app-planner/assets/icons/icon-180.png": "b0e6c51beedc6eff47fc5eb9469cfc5cd377090b",
+    "/e-app-planner/assets/icons/icon-180i.png": "9879511aacdfcdfb276af21d9232112283a419e9",
+    "/e-app-planner/assets/icons/icon-192.png": "1d5f87ea74bb88c24ac2dd6ea70227a494f630c5",
+    "/e-app-planner/assets/icons/icon-384.png": "ebf9794ea647bb6ac9694f4055017a9fbe3753b9",
+    "/e-app-planner/assets/icons/icon-512.png": "59e2f7d3be969a4721460cfc904aeac2c16e5bd6",
+    "/e-app-planner/assets/icons/icon-52.png": "f8f64347ff9deaeb77b75380b98235629064f877",
+    "/e-app-planner/assets/icons/icon-72.png": "0252b55a17ee8bd0beb587cfc0d88195f44084ce",
+    "/e-app-planner/assets/icons/icon-96.png": "ebaa0140d15011340a9f9a3f73ca56bf9cb660a3",
+    "/e-app-planner/favicon.png": "f47b4eb23af1816dd061d3d9cffc7c9f56559da7",
+    "/e-app-planner/index.html": "348ab5f425681cf5143534bb1add1ed9ccf054f8",
+    "/e-app-planner/main.883da972cd0e7dc6b1fa.js": "07a3686a60ea1bcb9d9285a95787d55b79cefcea",
+    "/e-app-planner/manifest.webmanifest": "71dc1b66df55f7faa57945231d445caba85f6061",
+    "/e-app-planner/polyfills.9ebcc2c81cebf53c3509.js": "5b23afdb474eae6e4d75c487f6a9e6c253ac5947",
+    "/e-app-planner/runtime.0e49e2b53282f40c8925.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/e-app-planner/styles.d0c7e972890a218c0630.css": "4b4306070a8ff1d95bda798c1c0875176405b467"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

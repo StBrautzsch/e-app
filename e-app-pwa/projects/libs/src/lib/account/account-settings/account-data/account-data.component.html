@@ -1,0 +1,42 @@
+<mat-expansion-panel>
+
+  <mat-expansion-panel-header>
+    <mat-panel-title><mat-icon>person_outline</mat-icon></mat-panel-title>
+    <mat-panel-description>Name und Telefon ändern</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <form class="flex-column">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Vorname</mat-label>
+      <input matInput placeholder="Maxi" #preNameField="ngModel" name="preNameField" [(ngModel)]="preName" required tabindex="1">
+      <mat-error *ngIf="preNameField.invalid">Bitte Vorname eingeben!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nachname</mat-label>
+      <input matInput placeholder="Musterfrau" #nameField="ngModel" name="nameField" [(ngModel)]="name" required tabindex="2">
+      <mat-error *ngIf="nameField.invalid">Bitte Nachname eingeben!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefonnummer</mat-label>
+      <input matInput placeholder="0123 123456" #telField="ngModel" name="telField" [(ngModel)]="tel" tabindex="3">
+    </mat-form-field>
+
+    <mat-action-row>
+      <button type="reset" mat-raised-button tabindex="5"
+              (click)="reset()"
+              [disabled]="!isChange()">
+        Abbrechen
+      </button>
+      <button type="submit" class="flex-end" mat-raised-button color="primary" tabindex="4"
+              [disabled]="nameField.invalid || preNameField.invalid || !isChange()"
+              (click)="save()">
+        Speichern
+      </button>
+    </mat-action-row>
+
+  </form>
+
+</mat-expansion-panel>

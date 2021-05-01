@@ -1,0 +1,10 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+.white-color {
+  color: white;
+}
+
+.drag-preview {
+  opacity: 0.7;
+  background: $primary-color;
+}

@@ -1,0 +1,21 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+mat-form-field {
+  margin-bottom: 10px;
+}
+
+mat-radio-button {
+  margin: 5px 0 15px 0;
+}
+
+::ng-deep .mat-radio-label {
+  white-space: normal !important;
+}
+
+mat-slide-toggle {
+  margin: 5px 0 15px 0;
+}
+
+button {
+  margin-right: 2px;
+}

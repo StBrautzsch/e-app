@@ -1,0 +1,44 @@
+<mat-expansion-panel>
+
+  <mat-expansion-panel-header>
+    <mat-panel-title><mat-icon>security</mat-icon></mat-panel-title>
+    <mat-panel-description>Passwort ändern</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <form class="flex-column" #form>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Aktuelles Passwort</mat-label>
+      <input matInput [type]="hideOld ? 'password' : 'text'" #pwOldFiled="ngModel" name="pwOldFiled"  [(ngModel)]="pwOld" required tabindex="1">
+      <button type="button" mat-icon-button matSuffix (click)="hideOld = !hideOld" tabindex="-1">
+        <mat-icon>{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="pwOldFiled.invalid">Bitte aktuelles Passwort eingeben!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Neues Passwort</mat-label>
+      <input matInput [type]="hideNew ? 'password' : 'text'" #pwNewFiled="ngModel" name="pwNewFiled"  [(ngModel)]="newPW" required tabindex="2">
+      <button type="button" mat-icon-button matSuffix (click)="hideNew = !hideNew" tabindex="-1">
+        <mat-icon>{{hideNew ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="pwNewFiled.invalid">Bitte neues Passwort eingeben!</mat-error>
+    </mat-form-field>
+
+    <lib-msg-div *ngIf="error" type="danger">Das aktuelle Passwort war nicht korrekt!</lib-msg-div>
+
+    <mat-action-row>
+      <button mat-raised-button type="reset" tabindex="4"
+              [disabled]="(pwOld === '') && (newPW === '')"
+              (click)="form.reset(); reset(); error = false;">
+        Abbrechen
+      </button>
+      <button type="submit" class="flex-end" mat-raised-button color="warn" tabindex="3"
+              [disabled]="pwOldFiled.invalid || pwNewFiled.invalid"
+              (click)="save()">
+        Passwort ändern
+      </button>
+    </mat-action-row>
+  </form>
+
+</mat-expansion-panel>

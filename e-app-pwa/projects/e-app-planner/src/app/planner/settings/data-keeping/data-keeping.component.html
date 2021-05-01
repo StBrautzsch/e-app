@@ -1,0 +1,33 @@
+<mat-expansion-panel>
+
+  <mat-expansion-panel-header>
+    <mat-panel-title><mat-icon>delete_outline</mat-icon></mat-panel-title>
+    <mat-panel-description>Datenhaltung</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <form class="flex-column">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Aufbewahrungszeit vergangener Termine</mat-label>
+      <input matInput placeholder="365" type="number" #storageDaysField="ngModel" [(ngModel)]="storageDays" name="storageDaysField" required>
+      <span matSuffix>Tage</span>
+      <mat-error *ngIf="storageDaysField.invalid">Bitte Aufbewahrungszeit eingeben!</mat-error>
+    </mat-form-field>
+
+    <lib-msg-div type="warn">Vergangene Termine werden nach Ablauf der hier angegebenen Aufbewahrungszeit in regelmäßigen Abständen auf dem Server gelöscht!</lib-msg-div>
+
+    <mat-action-row>
+      <button type="button" mat-raised-button
+              (click)="reset()"
+              [disabled]="!isChange()">
+        Zurücksetzen
+      </button>
+      <button type="submit" class="flex-end" mat-raised-button color="primary"
+              (click)="save()"
+              [disabled]="storageDaysField.invalid || !isChange()">
+        Speichern
+      </button>
+    </mat-action-row>
+  </form>
+
+</mat-expansion-panel>

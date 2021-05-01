@@ -1,0 +1,22 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+.hour {
+  background-color: $primary-color;
+  color: #ffffff;
+}
+
+.hour-border {
+  border-top: black solid 1px;
+}
+
+.half-hour-border {
+  border-top: black dashed 1px;
+}
+
+.hour-margin {
+  margin-top: 1px;
+}
+
+.half-hour-margin {
+  margin-top: 1px;
+}

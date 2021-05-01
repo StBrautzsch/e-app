@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style th:replace="fragments/style :: style"></style>
+</head>
+<body>
+
+<h2>Änderung der E-Mail-Adresse</h2>
+
+<p>
+    Sie haben die Änderung Ihrer E-Mailadresse von
+    <b><span th:text="${mailOld}"></span></b>
+    auf
+    <b><span th:text="${mailNew}"></span></b>
+    angefordert.
+</p>
+
+<p>Bitte Bestätigen Sie die Änderung mit folgendem Link:</p>
+
+<p><a href="" th:href="${link}">Neue E-Mail-Adresse bestätigen</a></p>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

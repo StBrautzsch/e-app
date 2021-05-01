@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style th:replace="fragments/style :: style"></style>
+</head>
+<body>
+
+<h2>E-APP-Termin</h2>
+
+<p>Sie haben folgenden Termin bei <b><span th:text="${planner}"></span></b> gebucht:</p>
+
+<div th:replace="fragments/slot :: slot"></div>
+
+<p><a href="" th:href="${link}">Buchung im E-APP-Client öffnen</a></p>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

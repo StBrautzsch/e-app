@@ -1,0 +1,37 @@
+<div class="flex-row">
+
+  <div class="min">
+    <mat-form-field appearance="fill" class="hour">
+      <mat-label>Stunden</mat-label>
+      <input matInput type="number" min="0" placeholder="0" ngModel [(ngModel)]="duration.h" required (change)="modelChange.emit(this.duration)">
+    </mat-form-field>
+  </div>
+
+  <div class="min">
+    <!--    <mat-form-field appearance="fill" class="hour">-->
+    <!--      <mat-label>Minuten</mat-label>-->
+    <!--      <input matInput placeholder="0" ngModel [(ngModel)]="duration.m" required type="number" step="15" min="0" max="45" (change)="modelChange.emit(this.duration)">-->
+    <!--    </mat-form-field>-->
+    <mat-form-field appearance="fill" class="hour">
+      <mat-label>Minuten</mat-label>
+      <mat-select [(value)]="duration.m">
+        <mat-option [value]="0">00</mat-option>
+        <mat-option [value]="15">15</mat-option>
+        <mat-option [value]="30">30</mat-option>
+        <mat-option [value]="45">45</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="min">
+    <mat-button-toggle-group #group="matButtonToggleGroup">
+      <mat-button-toggle value="add" (click)="group.value=0; add()" matTooltip="15 Min. vorwärts">
+        <mat-icon>add</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="remove"(click)="group.value=0; sub()" matTooltip="15 Min. zurück">
+        <mat-icon>remove</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+</div>

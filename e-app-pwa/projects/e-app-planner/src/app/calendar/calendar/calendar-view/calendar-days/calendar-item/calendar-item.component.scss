@@ -1,0 +1,13 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+.slot {
+  background: $primary-color;
+}
+
+.drag {
+  background: $accent-color;
+}
+
+.border-bottom {
+  border-bottom: white solid 2px;
+}

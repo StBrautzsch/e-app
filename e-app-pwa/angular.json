@@ -1,0 +1,364 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "e-app-planner": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/e-app-planner",
+      "sourceRoot": "projects/e-app-planner/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "baseHref": "/e-app-planner/",
+            "outputPath": "dist/e-app-planner",
+            "index": "projects/e-app-planner/src/index.html",
+            "main": "projects/e-app-planner/src/main.ts",
+            "polyfills": "projects/e-app-planner/src/polyfills.ts",
+            "tsConfig": "projects/e-app-planner/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/e-app-planner/src/favicon.png",
+              "projects/e-app-planner/src/assets",
+              "projects/e-app-planner/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "./node_modules/material-design-icons-iconfont/dist/material-design-icons.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/e-app-planner/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/e-app-planner/src/environments/environment.ts",
+                  "with": "projects/e-app-planner/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/e-app-planner/ngsw-config.json"
+            },
+            "demo": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/e-app-planner/src/environments/environment.ts",
+                  "with": "projects/e-app-planner/src/environments/environment.demo.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/e-app-planner/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "e-app-planner:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "e-app-planner:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "e-app-planner:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/e-app-planner/src/test.ts",
+            "polyfills": "projects/e-app-planner/src/polyfills.ts",
+            "tsConfig": "projects/e-app-planner/tsconfig.spec.json",
+            "karmaConfig": "projects/e-app-planner/karma.conf.js",
+            "assets": [
+              "projects/e-app-planner/src/favicon.ico",
+              "projects/e-app-planner/src/assets",
+              "projects/e-app-planner/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "./node_modules/material-design-icons-iconfont/dist/material-design-icons.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/e-app-planner/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/e-app-planner/tsconfig.app.json",
+              "projects/e-app-planner/tsconfig.spec.json",
+              "projects/e-app-planner/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/e-app-planner/e2e/protractor.conf.js",
+            "devServerTarget": "e-app-planner:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "e-app-planner:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "e-app-client": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/e-app-client",
+      "sourceRoot": "projects/e-app-client/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "baseHref": "/e-app-client/",
+            "outputPath": "dist/e-app-client",
+            "index": "projects/e-app-client/src/index.html",
+            "main": "projects/e-app-client/src/main.ts",
+            "polyfills": "projects/e-app-client/src/polyfills.ts",
+            "tsConfig": "projects/e-app-client/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/e-app-client/src/favicon.png",
+              "projects/e-app-client/src/assets",
+              "projects/e-app-client/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "./node_modules/material-design-icons-iconfont/dist/material-design-icons.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/e-app-client/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/e-app-client/src/environments/environment.ts",
+                  "with": "projects/e-app-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/e-app-client/ngsw-config.json"
+            },
+            "demo": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/e-app-client/src/environments/environment.ts",
+                  "with": "projects/e-app-client/src/environments/environment.demo.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/e-app-client/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "e-app-client:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "e-app-client:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "e-app-client:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/e-app-client/src/test.ts",
+            "polyfills": "projects/e-app-client/src/polyfills.ts",
+            "tsConfig": "projects/e-app-client/tsconfig.spec.json",
+            "karmaConfig": "projects/e-app-client/karma.conf.js",
+            "assets": [
+              "projects/e-app-client/src/favicon.ico",
+              "projects/e-app-client/src/assets",
+              "projects/e-app-client/src/manifest.webmanifest"
+            ],
+            "styles": [
+              "./node_modules/material-design-icons-iconfont/dist/material-design-icons.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/e-app-client/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/e-app-client/tsconfig.app.json",
+              "projects/e-app-client/tsconfig.spec.json",
+              "projects/e-app-client/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/e-app-client/e2e/protractor.conf.js",
+            "devServerTarget": "e-app-client:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "e-app-client:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "libs": {
+      "projectType": "library",
+      "root": "projects/libs",
+      "sourceRoot": "projects/libs/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/libs/tsconfig.lib.json",
+            "project": "projects/libs/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/libs/src/test.ts",
+            "tsConfig": "projects/libs/tsconfig.spec.json",
+            "karmaConfig": "projects/libs/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/libs/tsconfig.lib.json",
+              "projects/libs/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "e-app-planner"
+}

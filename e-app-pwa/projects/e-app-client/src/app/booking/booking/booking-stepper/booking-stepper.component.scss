@@ -1,0 +1,5 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+::ng-deep .mat-step-header {
+  padding-bottom: 10px !important;
+}

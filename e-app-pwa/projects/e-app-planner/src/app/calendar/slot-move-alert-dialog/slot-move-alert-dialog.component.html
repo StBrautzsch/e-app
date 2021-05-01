@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Termin verschieben</h2>
+
+<div mat-dialog-content>
+
+  <div class="table">
+    <div class="table-row">
+      <div class="table-cell header">Ursprünglicher Termin:</div>
+      <div class="table-cell">{{data.slot.start | date:'fullDate'}}, {{data.slot.start | date:'shortTime'}} Uhr ({{data.slot.duration}} Min.)</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell header">Neuer Termin:</div>
+      <div class="table-cell">{{data.startNew | date:'fullDate'}}, {{data.startNew | date:'shortTime'}} Uhr ({{data.durationNew}} Min.)</div>
+    </div>
+  </div>
+
+  <lib-msg-div *ngIf="isNewPast() && isOldPast()" type="warn">
+    Der Termin liegt in der Vergangenheit!
+  </lib-msg-div>
+
+  <lib-msg-div *ngIf="!(isNewPast() && isOldPast()) && isNewPast()" type="warn">
+    Der neue Termin liegt in der Vergangenheit!
+  </lib-msg-div>
+
+  <lib-msg-div *ngIf="!(isNewPast() && isOldPast()) && isOldPast()" type="warn">
+    Der ursprüngliche Termin liegt in der Vergangenheit!
+  </lib-msg-div>
+
+  <lib-msg-div type="warn">
+    Dieser Termin ist von {{data.slot.mergeClientName()}} gebucht. Soll der Termin wirklich verschoben werden?
+  </lib-msg-div>
+
+  <p>
+    <mat-checkbox class="white-space-normal" [(ngModel)]="data.notify">
+      {{data.slot.mergeClientName()}} über die Verschiebung informieren
+    </mat-checkbox>
+  </p>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button class="dialog-action" mat-stroked-button [mat-dialog-close]="false">Abbrechen</button>
+  <button class="dialog-action" mat-stroked-button [mat-dialog-close]="true" color="warn">Verschieben</button>
+</div>

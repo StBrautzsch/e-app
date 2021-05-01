@@ -1,0 +1,25 @@
+<div class="flex-row item"
+     (click)="appointment.showAppointmentDetailsDialog(item.item)"
+     (pointerenter)="mark = true" (pointerleave)="mark = false"
+     [ngClass]="{'mark': mark}">
+
+  <div class="min center-left">
+
+    <button mat-icon-button color="warn">
+      <mat-icon>access_alarm</mat-icon>
+    </button>
+
+  </div>
+
+  <div class="max center-left">
+    <ng-container *ngIf="app.calcContentWidth() < 500; else large">
+      {{item.item.start | date:'shortTime'}} Uhr ({{item.item.duration}} Min.)<br>{{item.item.mergePlannerName()}}
+    </ng-container>
+    <ng-template  #large>
+      {{item.item.start | date:'shortTime'}} Uhr ({{item.item.duration}} Min.) - {{item.item.mergePlannerName()}}<br>
+      {{item.item.bookingRemark}}
+    </ng-template >
+  </div>
+
+</div>
+

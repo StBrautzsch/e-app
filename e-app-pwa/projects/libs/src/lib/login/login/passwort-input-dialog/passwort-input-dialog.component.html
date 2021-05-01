@@ -1,0 +1,36 @@
+<div mat-dialog-title>
+  <h2>Passwort festlegen</h2>
+  <mat-divider></mat-divider>
+</div>
+
+<form>
+
+  <div mat-dialog-content>
+
+    <div class="flex-column">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Passwort</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" #passwordFiled="ngModel" name="pwOldFiled"  [(ngModel)]="password" required tabindex="1">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" tabindex="1">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordFiled.invalid">Bitte Passwort festlegen!</mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <p></p>
+
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button class="dialog-action" mat-stroked-button cdkFocusInitial color="" mat-dialog-close tabindex="3">Abbrechen</button>
+    <button class="dialog-action" mat-stroked-button color="primary" tabindex="2" type="submit"
+            [mat-dialog-close]="password"
+            [disabled]="passwordFiled.invalid">
+      Speichern
+    </button>
+  </div>
+
+</form>

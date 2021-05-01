@@ -1,0 +1,18 @@
+<lib-base-app #appContainer
+              [appNameShort]="appNameShort"
+              [appNameLong]="appNameLong">
+
+  <div menu-sidenav>
+    <app-sidenav-menu (navigate)="navigate($event)"></app-sidenav-menu>
+  </div>
+
+  <div routing>
+    <router-outlet></router-outlet>
+  </div>
+
+  <div menu-toolbar>
+    <app-calendar-toolbar-menu></app-calendar-toolbar-menu>
+    <app-agenda-toolbar-menu></app-agenda-toolbar-menu>
+  </div>
+
+</lib-base-app>

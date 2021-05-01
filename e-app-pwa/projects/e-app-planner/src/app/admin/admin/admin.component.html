@@ -1,0 +1,29 @@
+<ng-container *ngIf="!updating && !admin.updating">
+
+  <lib-main-container maxWidth="800">
+
+    <mat-card>
+
+      <app-account-filter></app-account-filter>
+
+      <cdk-virtual-scroll-viewport itemSize="50" [style.height.px]="app.screen.screenHeight - 170">
+
+        <ng-container *cdkVirtualFor="let item of admin.getFilteredAccounts(); let i = index; let f = first">
+
+          <app-account-item [item]="item"></app-account-item>
+
+        </ng-container>
+
+      </cdk-virtual-scroll-viewport>
+
+    </mat-card>
+
+  </lib-main-container>
+
+  <button mat-fab class="action-button" (click)="admin.showAccountCreateDialog()" matTooltip="Neuen Account anlegen">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</ng-container>
+
+<lib-page-spinner *ngIf="updating || admin.updating"></lib-page-spinner>

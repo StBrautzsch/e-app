@@ -1,0 +1,13 @@
+<ng-container *ngIf="app.page === app.titles.calendar">
+  <button mat-menu-item (click)="view.autoViewMode = true; view.changeEvent.emit()" [disabled]="view.autoViewMode">Automatisch</button>
+  <button mat-menu-item (click)="view.viewMode = tMode.DAY_3; view.autoViewMode = false" [disabled]="view.viewMode === tMode.DAY_3 && !view.autoViewMode">3 Tage</button>
+  <button mat-menu-item (click)="view.viewMode = tMode.WEEK_1; view.autoViewMode = false" [disabled]="view.viewMode === tMode.WEEK_1 && !view.autoViewMode">1 Woche</button>
+  <button mat-menu-item (click)="view.viewMode = tMode.WEEK_2; view.autoViewMode = false" [disabled]="view.viewMode === tMode.WEEK_2 && !view.autoViewMode">2 Wochen</button>
+  <button mat-menu-item (click)="view.viewMode = tMode.WEEK_3; view.autoViewMode = false" [disabled]="view.viewMode === tMode.WEEK_3 && !view.autoViewMode">3 Wochen</button>
+  <button mat-menu-item (click)="view.viewMode = tMode.WEEK_4; view.autoViewMode = false" [disabled]="view.viewMode === tMode.WEEK_4 && !view.autoViewMode">4 Wochen</button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="view.personalised = true" [disabled]="view.personalised">Personalisiert</button>
+  <button mat-menu-item (click)="view.personalised = false" [disabled]="!view.personalised">Alle Zeiträume</button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="calendar.updateSlotsAndCalendar(view.getPlannerSettings().weeksPast, view.getPlannerSettings().weeksFuture)" >Aktualisieren</button>
+</ng-container>

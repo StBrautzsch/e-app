@@ -1,0 +1,49 @@
+<div mat-dialog-title>
+  <h2>Gebuchter Termin</h2>
+</div>
+
+<div mat-dialog-content>
+
+  <div class="table">
+    <div class="table-row">
+      <div class="table-cell header">Datum:</div>
+      <div class="table-cell">{{data.appointment.start | date:'fullDate'}}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell header">Zeit:</div>
+      <div class="table-cell">{{data.appointment.start | date:'shortTime'}} Uhr</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell header">Dauer:</div>
+      <div class="table-cell">{{data.appointment.duration}} Minuten</div>
+    </div>
+  </div>
+
+
+  <div class="table">
+    <div class="table-row span">
+      <div class="table-cell larger">{{data.appointment.mergePlannerName()}}</div>
+    </div>
+    <div  *ngIf="data.appointment.bookingRemark" class="table-row span">
+      <div class="table-cell">{{data.appointment.bookingRemark}}</div>
+    </div>
+  </div>
+
+  <div class="table">
+    <div class="table-row">
+      <div class="table-cell"><button mat-icon-button (click)="mailto()"><mat-icon>email</mat-icon></button></div>
+      <div class="table-cell" (click)="mailto()" style="cursor: pointer">{{data.appointment.bookingPlannerMail}}</div>
+    </div>
+    <div class="table-row" *ngIf="data.appointment.bookingPlannerTel">
+      <div class="table-cell"><button mat-icon-button (click)="tel()"><mat-icon>phone</mat-icon></button></div>
+      <div class="table-cell" (click)="tel()" style="cursor: pointer">{{data.appointment.bookingPlannerTel}}</div>
+    </div>
+  </div>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button class="dialog-action" mat-stroked-button color="" (click)="iCal()">iCalendar Download</button>
+  <button class="dialog-action" mat-stroked-button color="warn" [mat-dialog-close]="true" (click)="storno()">Stornieren</button>
+  <button class="dialog-action" mat-stroked-button cdkFocusInitial color="primary" mat-dialog-close>Schließen</button>
+</div>

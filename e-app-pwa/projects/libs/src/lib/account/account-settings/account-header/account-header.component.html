@@ -1,0 +1,38 @@
+<mat-card>
+
+  <mat-card-header>
+    <div mat-card-avatar><mat-icon>account_circle</mat-icon></div>
+    <mat-card-title>{{account.user.mergeName()}}</mat-card-title>
+  </mat-card-header>
+
+  <div class="table">
+    <div class="table-row">
+      <div class="table-cell header">Account-Id:</div>
+      <div class="table-cell">{{account.user.id}}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell header">E-Mail-Adresse:</div>
+      <div class="table-cell">{{account.user.mail}}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell header">Telefon-Nummer:</div>
+      <div class="table-cell">{{account.user.tel}}</div>
+    </div>
+  </div>
+
+  <lib-msg-div *ngIf="account.user.isMailChanging()" type="warn">
+    Es läuft ein Verifizierungs-Prozess zur Änderung Ihrer E-Mail-Adresse!
+  </lib-msg-div>
+
+  <ng-container *ngIf="app.isPlanner">
+    <p></p>
+    <mat-slide-toggle name="bookingActive" [(ngModel)]="account.user.bookingActive"
+                      (ngModelChange)="account.castPlanner().saveBookingActive(account.user.bookingActive)">
+      Buchung durch Klienten aktiv
+    </mat-slide-toggle>
+    <lib-msg-div *ngIf="!account.user.bookingActive" type="warn">
+      Die Buchung durch Klienten ist inaktiv. Es können somit keine Termine bei Ihnen gebucht werden!
+    </lib-msg-div>
+  </ng-container>
+
+</mat-card>

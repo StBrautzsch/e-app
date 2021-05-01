@@ -1,0 +1,40 @@
+<lib-main-container maxWidth="850">
+
+  <mat-horizontal-stepper [linear]="true" labelPosition="bottom" #stepper>
+
+    <mat-step [stepControl]="formGroupChoosePerson">
+      <ng-template matStepLabel>Person auswählen</ng-template>
+      <app-choose-person #choosePerson [stepper]="stepper"
+                         [formGroup]="formGroupChoosePerson">
+      </app-choose-person>
+    </mat-step>
+
+    <mat-step [stepControl]="formGroupChooseSlot">
+      <ng-template matStepLabel>Termin auswählen</ng-template>
+      <app-choose-slot #chooseSlot [stepper]="stepper"
+                       [formGroup]="formGroupChooseSlot">
+      </app-choose-slot>
+    </mat-step>
+
+    <ng-container *ngIf="!account.isAuth()">
+      <mat-step [stepControl]="formGroupInputData">
+        <ng-template matStepLabel>Kontaktdaten angeben</ng-template>
+        <app-input-data #inputData [stepper]="stepper" [formGroup]="formGroupInputData"></app-input-data>
+      </mat-step>
+
+      <mat-step [stepControl]="formGroupSubmit">
+        <ng-template matStepLabel>Buchen</ng-template>
+        <app-booking-submit [stepper]="stepper" [formGroup]="formGroupSubmit" (bookingEvent)="bookingSubmitAnonym()">
+        </app-booking-submit>
+      </mat-step>
+     </ng-container>
+
+    <mat-step *ngIf="account.isAuth()" [stepControl]="formGroupSubmit">
+      <ng-template matStepLabel>Buchen</ng-template>
+      <app-booking-submit [stepper]="stepper" [formGroup]="formGroupSubmit" (bookingEvent)="bookingSubmitAuth()">
+      </app-booking-submit>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+</lib-main-container>

@@ -1,0 +1,39 @@
+<div class="flex-row">
+
+  <div *ngFor="let day of days; let i = index; let isLast = last"
+       class="flex-column mat-elevation-z4"
+       [style.width.px]="view.slotWidthData"
+       [style.margin-left.px]="calcDayMargin(day.time, i)"
+       [style.margin-right.px]="getMargin(isLast)">
+
+    <ng-container *ngFor="let slot of daySlots; let i = index; let isEvenSlot = even; let isFirst = first">
+
+      <ng-container *ngIf="view.showHour(calcHour(i))">
+
+        <div *ngIf="getCalendarSlot(day.time, i).time.getHours() === calcHour(i); else timeSwitch"
+             [ngClass]="{'even': isEvenSlot && isWeekday(day.time), 'odd': !isEvenSlot && isWeekday(day.time),
+                         'even-saturday': isEvenSlot && isSaturday(day.time), 'odd-saturday': !isEvenSlot && isSaturday(day.time),
+                         'even-sunday': isEvenSlot && isSunday(day.time), 'odd-sunday': !isEvenSlot && isSunday(day.time),
+                         'past': isPast(i, day.time),
+                         'hour-border': view.grid && calcMin(i) === 0, 'half-hour-border': view.grid && calcMin(i) === 30}"
+             [style.height.px]="view.slotHeight"
+             [style.width.px]="view.slotWidthData">
+
+          <app-calendar-item [calendarItem]="getCalendarSlot(day.time, i)"></app-calendar-item>
+
+        </div>
+
+        <ng-template #timeSwitch>
+          <div [ngClass]="{'hour-border': view.grid && calcMin(i) === 0, 'half-hour-border': view.grid && calcMin(i) === 30}"
+               [style.height.px]="view.slotHeight"
+               [style.width.px]="view.slotWidthData">
+          </div>
+        </ng-template>
+
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+
+</div>

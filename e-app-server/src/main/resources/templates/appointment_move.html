@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style th:replace="fragments/style :: style"></style>
+</head>
+<body>
+
+<h2>Termin-Verschiebung</h2>
+
+<p>Ihr Termin bei <b><span th:text="${planner}"></span></b> wurde verschoben:</p>
+
+<table>
+    <tr>
+        <td class="table-cell header">Ursprünglicher Termin:</td>
+        <td class="table-cell"><span th:text="${date}"></span>, <span th:text="${time}"></span> Uhr (<span th:text="${duration}"></span> Minuten)</td>
+    </tr>
+    <tr>
+        <td class="table-cell header">Neuer Termin:</td>
+        <td class="table-cell"><span th:text="${dateNew}"></span>, <span th:text="${timeNew}"></span> Uhr (<span th:text="${durationNew}"></span> Minuten)</td>
+    </tr>
+    <tr>
+        <td class="table-cell header">Kommentar:</td>
+        <td class="table-cell"><span th:text="${comment}"></span></td>
+    </tr>
+</table>
+
+<p><a href="" th:href="${link}">Buchung im E-APP-Client öffnen</a></p>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

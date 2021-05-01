@@ -1,0 +1,37 @@
+<mat-card>
+
+  <mat-card-header>
+    <div mat-card-avatar><mat-icon>developer_board</mat-icon></div>
+    <mat-card-title>Technische Informationen</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div class="table">
+      <div class="table-row">
+        <div class="table-cell header">Version:</div>
+        <div class="table-cell">{{app.version}}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header">API-Host:</div>
+        <div class="table-cell">{{api.API_HOST}}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header">API-URL:</div>
+        <div class="table-cell">{{api.API_URL_PREFIX}}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header">Authentifizierung:</div>
+        <div class="table-cell">
+          <ng-container *ngIf="api.isAuth()">authentifiziert bis {{api.getTokenExpiration() | date: 'medium'}}</ng-container>
+          <ng-container *ngIf="!api.isAuth()">nicht authentifiziert</ng-container>
+        </div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell header"><button mat-raised-button (click)="ping()">Ping</button></div>
+        <div class="table-cell">{{pingResult}}</div>
+      </div>
+    </div>
+  </mat-card-content>
+
+</mat-card>

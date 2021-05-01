@@ -1,0 +1,42 @@
+<div cdkDrag
+     (cdkDragStarted)="calendar.drag = true"
+     (cdkDragEnded)="calendar.drag = false"
+     [cdkDragData]="slot"
+     [cdkDragStartDelay]="70"
+     [style.height.px]="view.slotHeight"
+     [style.width.px]="view.slotWidthData">
+
+  <ng-container *ngIf="!slot.changing">
+
+    <button *ngIf="!slot.free"
+            mat-icon-button
+            color="warn"
+            [matTooltip]="tooltipForBookedSlot('Gebuchter Termin mit ' + slot.mergeClientName() + ': ' + (slot.start | date: 'dd.MM.yyyy, hh:mm') + ' Uhr (' + slot.duration + ' Min.)')">
+      <mat-icon>access_alarm</mat-icon>
+    </button>
+
+    <button *ngIf="slot.free"
+            mat-icon-button
+            class="white-color"
+            matTooltip="Freier Slot: {{slot.start | date: 'dd.MM.yyyy, hh:mm'}} Uhr ({{slot.duration}} Min.)" matTooltipPosition="above">
+      <mat-icon>crop_free</mat-icon>
+    </button>
+
+    <button cdkDragHandle
+            mat-icon-button
+            class="white-color"
+            style="cursor: move">
+      <mat-icon>open_with</mat-icon>
+    </button>
+
+  </ng-container>
+
+  <div *cdkDragPreview
+       class="drag-preview mat-elevation-z4"
+       [style.height.px]="calcAppointmentHeight()"
+       [style.width.px]="view.slotWidthData">
+  </div>
+
+  <div *cdkDragPlaceholder></div>
+
+</div>

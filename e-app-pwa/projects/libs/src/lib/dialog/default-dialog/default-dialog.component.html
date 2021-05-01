@@ -1,0 +1,19 @@
+<ng-container *ngIf="data.title.length === 0">
+  <h2 *ngIf="data.type === tDefaultDialogType.ERROR" mat-dialog-title>Fehler</h2>
+  <h2 *ngIf="data.type === tDefaultDialogType.SUCCESS" mat-dialog-title>Information</h2>
+</ng-container>
+<h2 *ngIf="data.title.length !== 0" mat-dialog-title>{{data.title}}</h2>
+
+<div mat-dialog-content>
+
+  <div class="msg" [ngClass]="{
+        'error': data.type === tDefaultDialogType.ERROR,
+        'success': data.type === tDefaultDialogType.SUCCESS}">
+    {{data.msg}}
+  </div>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button class="dialog-action" mat-stroked-button [mat-dialog-close]="true">Schließen</button>
+</div>

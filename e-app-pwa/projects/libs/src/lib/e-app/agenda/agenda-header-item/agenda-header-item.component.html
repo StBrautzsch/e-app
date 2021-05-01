@@ -1,0 +1,16 @@
+<div class="flex-row item mat-elevation-z4">
+
+  <div class="max day center-left">
+    <ng-container *ngIf="app.screen.isSmall()">{{date | date:'dd.MM.y, E'}}</ng-container>
+    <ng-container *ngIf="!app.screen.isSmall()">{{date | date:'dd.MM.y, EEEE'}}</ng-container>
+  </div>
+
+  <div *ngIf="isToday(date)" class="min day center-left">heute</div>
+  <div *ngIf="isTomorrow(date)" class="min day center-left">morgen</div>
+
+  <div *ngIf="!isToday(date) && !isTomorrow(date) && newMonth" class="min day center-left">
+    <ng-container *ngIf="app.screen.isSmall()">{{date | date:'MMM y'}}</ng-container>
+    <ng-container *ngIf="!app.screen.isSmall()">{{date | date:'MMMM y'}}</ng-container>
+  </div>
+
+</div>

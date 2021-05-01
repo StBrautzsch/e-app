@@ -1,0 +1,59 @@
+<lib-page-spinner *ngIf="updating"></lib-page-spinner>
+
+<div *ngIf="!updating && !!booking.selectedPlannerPerson" class="flex-column">
+
+  <form [formGroup]="formGroup" class="flex-column">
+
+    <div class="flex-row">
+
+      <div class="flex-column max" [ngClass]="{'side': isSideFilter()}">
+        <ng-container *ngIf="!booking.slots.length; else slotsPresent">
+          <lib-msg-div type="warn">{{booking.selectedPlannerPerson.mergeName()}} hat leider aktuell keine freien Termine.</lib-msg-div>
+        </ng-container>
+
+        <ng-template #slotsPresent>
+
+          <app-choose-slot-filter *ngIf="!isSideFilter()" [slotFilter]="booking.slotFilter" (filterChange)="booking.filterSlots()">
+          </app-choose-slot-filter>
+
+          <div *ngIf="booking.filteredSlots.length"  class="flex-column">
+            <mat-selection-list multiple="false" [formControlName]="FORMNAME_SLOT_LIST"
+                                [style.max-height.px]="app.screen.screenHeight - calcHeight()"
+                                (selectionChange)="change()">
+              <mat-list-option *ngFor="let slot of booking.filteredSlots; let i = index"
+                               [value]="slot.id">
+                <mat-icon matListIcon>book_online</mat-icon>
+                <h4 matLine>{{slot.start | date: 'EEEEEE, dd.MM.y, HH:mm'}} Uhr</h4>
+                <p matLine>{{slot.duration}} Min.</p>
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+
+          <lib-msg-div *ngIf="!booking.filteredSlots.length" type="warn">
+            {{booking.selectedPlannerPerson.mergeName()}} hat leider aktuell keine freien Termin, die zu den vorgegebenen Filtern passen.
+          </lib-msg-div>
+
+          <p>{{booking.filteredSlots.length}} von {{booking.slots.length}} freie Termine</p>
+
+        </ng-template>
+      </div>
+
+      <div *ngIf="isSideFilter() && booking.slots.length" class="flex-column side" style="overflow: auto"
+           [style.max-height.px]="app.screen.screenHeight - 260">
+        <app-choose-slot-filter-side [slotFilter]="booking.slotFilter" (filterChange)="booking.filterSlots()">
+        </app-choose-slot-filter-side>
+      </div>
+
+    </div>
+
+    <div class="flex-row">
+      <button mat-raised-button matStepperPrevious>Zurück</button>
+      <button mat-raised-button *ngIf="booking.slots.length && app.calcContentWidth() > 400"
+              (click)="booking.resetSlotFilter(); booking.filterSlots()">
+        Filter zurücksetzen
+      </button>
+      <button mat-raised-button type="submit" class="min" color="primary" matStepperNext [disabled]="!formGroup.valid">Weiter</button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,25 @@
+<div cdkDropList
+     [ngClass]="{
+        'drag': drag || isCreating(),
+        'slot': !drag && calendarItem.isSlot(),
+        'border-bottom': calendarItem.isSlotEnd()}"
+     (cdkDropListDropped)="drop($event)"
+     (cdkDropListEntered)="enter($event)"
+     (cdkDropListExited)="exited()"
+     (pointerenter)="pointerEnter()"
+     (pointerleave)="showTimeEnter = false; exitedDelay();"
+     (pointerup)="pointerClick()"
+     (click)="click()"
+     [cdkDropListEnterPredicate]="dropListEnterPredicate"
+     [style.height.px]="view.slotHeight"
+     [style.width.px]="view.slotWidthData">
+
+  <app-slot-action *ngIf="calendarItem.isSlot() && calendarItem.slotStart"
+                   [slot]="calendarItem.slot">
+  </app-slot-action>
+
+  <app-calendar-item-info  *ngIf="!calendarItem.isSlot() && (drag || showTimeEnter || showTimeClick)"
+                           [calendarItem]="calendarItem">
+  </app-calendar-item-info>
+
+</div>

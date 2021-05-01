@@ -1,0 +1,101 @@
+{
+  "configVersion": 1,
+  "timestamp": 1618650473991,
+  "index": "/e-app-client/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/e-app-client/index.html",
+        "/e-app-client/main.2784df7308c3cef03af9.js",
+        "/e-app-client/manifest.webmanifest",
+        "/e-app-client/polyfills.b7c555de68fbd3b58cb9.js",
+        "/e-app-client/runtime.0e49e2b53282f40c8925.js",
+        "/e-app-client/styles.d0c7e972890a218c0630.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/e-app-client/MaterialIcons-Regular.1811d381e9d3e8334394.woff",
+        "/e-app-client/MaterialIcons-Regular.45c4a4612e18a3255f51.ttf",
+        "/e-app-client/MaterialIcons-Regular.56395d5d012de45e4955.eot",
+        "/e-app-client/MaterialIcons-Regular.fa3334fe030aed8470dd.woff2",
+        "/e-app-client/assets/icons/icon-120.png",
+        "/e-app-client/assets/icons/icon-120i.png",
+        "/e-app-client/assets/icons/icon-128.png",
+        "/e-app-client/assets/icons/icon-144.png",
+        "/e-app-client/assets/icons/icon-152.png",
+        "/e-app-client/assets/icons/icon-152i.png",
+        "/e-app-client/assets/icons/icon-180.png",
+        "/e-app-client/assets/icons/icon-180i.png",
+        "/e-app-client/assets/icons/icon-192.png",
+        "/e-app-client/assets/icons/icon-384.png",
+        "/e-app-client/assets/icons/icon-512.png",
+        "/e-app-client/assets/icons/icon-52.png",
+        "/e-app-client/assets/icons/icon-72.png",
+        "/e-app-client/assets/icons/icon-96.png",
+        "/e-app-client/favicon.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/e-app-client/MaterialIcons-Regular.1811d381e9d3e8334394.woff": "fd35aef76e3df58554d92457fb41f0f6a5dd4f01",
+    "/e-app-client/MaterialIcons-Regular.45c4a4612e18a3255f51.ttf": "ab5cb381b64844e1ae426cde4064074fac76c567",
+    "/e-app-client/MaterialIcons-Regular.56395d5d012de45e4955.eot": "da7bf13623178411bd7960b7c2e6ff8767ceac39",
+    "/e-app-client/MaterialIcons-Regular.fa3334fe030aed8470dd.woff2": "0bec0581767ccb3256ca805b1904031ac0147f07",
+    "/e-app-client/assets/icons/icon-120.png": "0308f1193ac88fa29c2c1fcb1fc12b99b2dd110a",
+    "/e-app-client/assets/icons/icon-120i.png": "9d219eb2d21a55f3a99efff263124642253bda94",
+    "/e-app-client/assets/icons/icon-128.png": "ad935d0734ef5efaca3922372c49d3796e37b79c",
+    "/e-app-client/assets/icons/icon-144.png": "984ea33b295904d925f979189e2ebfc73341ce86",
+    "/e-app-client/assets/icons/icon-152.png": "a3ea338a52952831629f06e25a725ae700e43697",
+    "/e-app-client/assets/icons/icon-152i.png": "64927df98f5eb667662aac64f10a274616c4af77",
+    "/e-app-client/assets/icons/icon-180.png": "3621b8111b46795c4fda19796a9b2ab4086eb529",
+    "/e-app-client/assets/icons/icon-180i.png": "dc85b9999cb435cabbb630d7174ad81bdeeecaf2",
+    "/e-app-client/assets/icons/icon-192.png": "c0a88535e690f80358dbd919135c5cb29691cc53",
+    "/e-app-client/assets/icons/icon-384.png": "85ae3484e885700d4bb3194064371cfb62256cc3",
+    "/e-app-client/assets/icons/icon-512.png": "c06f034761103d66a87bdef5ad179680dcf16c28",
+    "/e-app-client/assets/icons/icon-52.png": "ce0b4008d045e9385687ff7724fd78e7571f036f",
+    "/e-app-client/assets/icons/icon-72.png": "84181c7b6840c25aaf7b1f72c595800e6de54148",
+    "/e-app-client/assets/icons/icon-96.png": "7b58fe2be8d94d74e65b8eb4b45c26bff5a440ba",
+    "/e-app-client/favicon.png": "dd2aaa4c5bc5400679ce33218e02b8e4f8cef63c",
+    "/e-app-client/index.html": "7c3863d5b4cd3b94f1221e8d3552488085229087",
+    "/e-app-client/main.2784df7308c3cef03af9.js": "be3e93155eae197386ed1ace4eaf5432c5218c34",
+    "/e-app-client/manifest.webmanifest": "8f52839b3a16aaf2bb595ccec36e21bef26307b2",
+    "/e-app-client/polyfills.b7c555de68fbd3b58cb9.js": "6d331ca87eb2308d163986b0f945769a0577441e",
+    "/e-app-client/runtime.0e49e2b53282f40c8925.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/e-app-client/styles.d0c7e972890a218c0630.css": "4b4306070a8ff1d95bda798c1c0875176405b467"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

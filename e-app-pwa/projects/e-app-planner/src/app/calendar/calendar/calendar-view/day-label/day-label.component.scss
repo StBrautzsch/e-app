@@ -1,0 +1,24 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+.header {
+  color: #ffffff;
+  padding: 3px;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+
+.weekday {
+  background-color: $primary-color;
+}
+
+.sunday {
+  background-color: #2f3775;
+}
+
+.saturday {
+  background-color: #374494;
+}
+
+.now {
+  background-color: $accent-color;
+}

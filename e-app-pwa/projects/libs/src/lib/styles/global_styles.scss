@@ -1,0 +1,86 @@
+@import "colors";
+
+.invisible {
+  display: none
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.min {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.max {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-top {
+  display: flex;
+  //align-items: center;
+  justify-content: center;
+}
+
+.center-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px 0 10px;
+}
+
+.flex-end {
+  align-self: flex-end;
+}
+
+.table {
+  display: table;
+  border-spacing: 10px;
+}
+
+.header {
+  text-align: end;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.larger {
+  font-size: larger;
+}
+
+.dialog-action {
+  margin: 0 0 5px 0;
+}
+
+.disable-select {
+  cursor: default;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.component {
+  margin-bottom: 20px;
+}

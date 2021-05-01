@@ -1,0 +1,25 @@
+<ng-container *ngIf="!appointment.updating">
+
+  <lib-main-container maxWidth="800">
+
+    <mat-card>
+
+      <cdk-virtual-scroll-viewport *ngIf="appointment.agenda.length" itemSize="50" [style.height.px]="app.screen.screenHeight - 108">
+        <ng-container *cdkVirtualFor="let item of appointment.agenda; let i = index; let f = first">
+
+          <lib-agenda-header-item *ngIf="!item.isItem()" [date]="item.date" [newMonth]="item.newMonth"></lib-agenda-header-item>
+
+          <app-agenda-appointment-item *ngIf="item.isItem()" [item]="item"></app-agenda-appointment-item>
+
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+
+      <lib-msg-div *ngIf="!appointment.agenda.length">Sie haben keine bevorstehenden Termine!</lib-msg-div>
+
+    </mat-card>
+
+  </lib-main-container>
+
+</ng-container>
+
+<lib-page-spinner *ngIf="appointment.updating"></lib-page-spinner>

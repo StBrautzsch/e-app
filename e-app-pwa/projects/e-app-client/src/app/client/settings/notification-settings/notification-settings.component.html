@@ -1,0 +1,19 @@
+<mat-expansion-panel [expanded]="true">
+
+  <mat-expansion-panel-header>
+    <mat-panel-title><mat-icon>notification_important</mat-icon></mat-panel-title>
+    <mat-panel-description>Benachrichtigungen und Erinnerungen</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-slide-toggle [(ngModel)]="clientAccount.user.settings.reminderMail"
+                    (ngModelChange)="clientAccount.saveSettings()">
+    Erinnerung an Termin per E-Mail
+  </mat-slide-toggle>
+
+  <mat-slide-toggle [(ngModel)]="clientAccount.user.settings.bookingMail"
+                    (ngModelChange)="clientAccount.saveSettings()">
+    Buchungsbestätigung per E-Mail
+  </mat-slide-toggle>
+
+
+</mat-expansion-panel>

@@ -1,0 +1,14 @@
+<mat-card>
+
+  <mat-card-header>
+    <div mat-card-avatar><mat-icon>policy</mat-icon></div>
+    <mat-card-title>Informationen und Pflichtangaben</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p><button mat-raised-button (click)="app.dialog.showPrivacyPolicyDialog()">Datenschutzbestimmungen anzeigen</button></p>
+    <p><button mat-raised-button (click)="app.dialog.showTermsOfUseDialog()">Nutzungsbedingungen anzeigen</button></p>
+    <p><button mat-raised-button (click)="app.dialog.showLegalNoticeDialog()">Impressum anzeigen</button></p>
+  </mat-card-content>
+
+</mat-card>

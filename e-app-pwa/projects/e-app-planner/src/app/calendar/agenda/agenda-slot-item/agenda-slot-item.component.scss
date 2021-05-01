@@ -1,0 +1,16 @@
+@import "projects/libs/src/lib/styles/global_styles";
+
+div {
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.mark {
+  background: #f5f5f5;
+}
+
+.item  {
+  height: 50px;
+  margin: 5px 0 5px 0;
+}

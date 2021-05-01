@@ -1,0 +1,28 @@
+<mat-expansion-panel [expanded]="false">
+
+  <mat-expansion-panel-header>
+    <mat-panel-title><mat-icon>date_range</mat-icon></mat-panel-title>
+    <mat-panel-description>Datumsbereich</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <h3>Vergangenheit</h3>
+  <mat-radio-group [(ngModel)]="plannerAccount.user.settings.weeksPast" (change)="account.castPlanner().saveSettings()">
+    <mat-radio-button [value]="4">4 Wochen</mat-radio-button>
+    <mat-radio-button [value]="8">8 Wochen</mat-radio-button>
+    <mat-radio-button [value]="53">1 Jahr</mat-radio-button>
+    <mat-radio-button [value]="53*2">2 Jahre</mat-radio-button>
+    <mat-radio-button [value]="53*3">3 Jahre</mat-radio-button>
+  </mat-radio-group>
+
+  <h3>Zukunft</h3>
+  <mat-radio-group [(ngModel)]="plannerAccount.user.settings.weeksFuture" (change)="account.castPlanner().saveSettings()">
+    <mat-radio-button [value]="53">1 Jahr</mat-radio-button>
+    <mat-radio-button [value]="53 * 2">2 Jahre</mat-radio-button>
+    <mat-radio-button [value]="53 * 3">3 Jahre</mat-radio-button>
+  </mat-radio-group>
+
+  <lib-msg-div type="warn">
+    Die Länge der Zeitspanne beeinflusst direkt die zu übertragenen Datenmengen und die Ladezeit!
+  </lib-msg-div>
+
+</mat-expansion-panel>

@@ -1,0 +1,36 @@
+<div class="main" [style.max-height.px]="app.screen.screenHeight - 200">
+
+  <form [formGroup]="formGroup" >
+
+    <div class="flex-column">
+
+      <mat-form-field class="mat-form-field-margin">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Maxi Musterfrau" [formControlName]="FORMNAME_NAME" (change)="setData(FORMNAME_NAME)" required>
+        <mat-error *ngIf="!formGroup.get(FORMNAME_NAME).valid">Bitte Name eingeben!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="mat-form-field-margin">
+        <mat-label>E-Mail-Adresse</mat-label>
+        <input matInput placeholder="example@example.com" [formControlName]="FORMNAME_MAIL"  (change)="setData(FORMNAME_MAIL)" required>
+        <mat-error *ngIf="!formGroup.get(FORMNAME_MAIL).valid">Bitte gültige E-Mail-Adresse eingeben!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Telefonnummer</mat-label>
+        <input matInput placeholder="0123 123456" [formControlName]="FORMNAME_TEL"  (change)="setData(FORMNAME_TEL)">
+      </mat-form-field>
+    </div>
+
+    <lib-msg-div type="warn">
+      Sie erhalten nach der Buchung eine E-Mail als Bestätigung mit allen Informationen zum Termin. Über diese E-Mail ist eine Stornierung des Termins möglich. Bitte geben Sie daher eine korrekte E-Mail-Adresse an.
+    </lib-msg-div>
+
+    <div class="flex-row">
+      <button mat-raised-button matStepperPrevious>Zurück</button>
+      <button mat-raised-button type="submit" class="min" color="primary" matStepperNext [disabled]="!formGroup.valid" ngDefaultControl>Weiter</button>
+    </div>
+
+  </form>
+
+</div>

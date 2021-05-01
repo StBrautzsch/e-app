@@ -1,0 +1,17 @@
+<div mat-dialog-title>
+  <h2>Termin stornieren</h2>
+</div>
+
+<div mat-dialog-content>
+
+  <p>Soll der folgende Termin wirklich storniert werden?</p>
+
+  <p>{{data.appointment.start | date:'fullDate'}}, {{data.appointment.start | date:'shortTime'}} Uhr</p>
+  <p>Bei: {{data.appointment.mergePlannerName()}}</p>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button class="dialog-action" mat-stroked-button cdkFocusInitial mat-dialog-close>Abbrechen</button>
+  <button class="dialog-action" mat-stroked-button color="warn" [mat-dialog-close]="true">Stornieren</button>
+</div>

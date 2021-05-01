@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style th:replace="fragments/style :: style"></style>
+</head>
+<body>
+
+<h2>Account-Verifikation</h2>
+
+<p>
+    Für die E-Mailadresse
+    <b><span th:text="${mailOld}"></span></b>
+    wurde ein neuer Account im E-APP-System angelegt.
+</p>
+
+<p>Bitte schließen Sie die Registierung mit folgendem Link ab:</p>
+
+<p><a href="" th:href="${link}">Registierung abschließen</a></p>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

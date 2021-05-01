@@ -1,0 +1,29 @@
+<mat-card>
+
+  <mat-card-header>
+    <div mat-card-avatar><mat-icon>info_outline</mat-icon></div>
+    <mat-card-title>{{app.appNameShort}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <p>Dieser lauffähige Prototyp entstand im Rahmen der Masterarbeit von Stefan Brautzsch an der Technischen Hochschule Brandenburg:</p>
+
+    <p>
+      <i>
+        Nutzerzentrierte Entwicklung eines leichtgewichtigen Termin-Vergabe-Systems für heterogene Nutzungsszenarien:
+        Eine Analyse aktueller Technologien sowie eine prototypische Implementierung als Progressive-Web-App mit Back-End
+      </i>
+    </p>
+
+    <p *ngIf="app.isPlanner">
+      Die hier vorliegende PWA (Progressive-Web-App) stellt das Front-End für Terminplanende dar, die freie Zeitbereiche zur Terminbuchung durch Klienten anbieten möchten.
+    </p>
+
+    <p *ngIf="!app.isPlanner">
+      Die hier vorliegende PWA (Progressive-Web-App) stellt das Front-End für Klienten dar, die Termine bei Terminplanenden buchen möchten.
+    </p>
+
+  </mat-card-content>
+
+</mat-card>

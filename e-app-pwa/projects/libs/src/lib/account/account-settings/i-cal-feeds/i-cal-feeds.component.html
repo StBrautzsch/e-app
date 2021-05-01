@@ -1,0 +1,29 @@
+<mat-expansion-panel>
+
+  <mat-expansion-panel-header>
+    <mat-panel-title><mat-icon>sync</mat-icon></mat-panel-title>
+    <mat-panel-description>iCalendar-Feeds konfigurieren</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <lib-msg-div>
+    Mit iCalendar-Feeds können Sie die Termine des E-APP-Systems automatisch in andere Systeme importieren.
+    Bei Aktivierung erhalten Sie eine URL, die im zu integrierenden System anzugeben ist.
+  </lib-msg-div>
+
+  <mat-slide-toggle name="iCalFeedsRefActive" [(ngModel)]="account.user.feedsActive"
+                    (ngModelChange)="account.saveICalFeedsActive(account.user.feedsActive)">
+    iCalendar-Feeds aktiv
+  </mat-slide-toggle>
+
+  <ng-container *ngIf="account.user.feedsActive">
+    <p></p>
+    <button mat-raised-button color="primary" [cdkCopyToClipboard]="url + account.user.feedsRef">URL in Zwischenablage kopieren</button>
+    <p></p>
+    <lib-msg-div type="warn">
+      Jeder, der die URL kennt, kann die Termine einsehen!
+      Deaktivieren Sie die Funktion wenn jemand unbefugtes Kenntnis von der URL hat.
+      Die erneute Aktivierung generiert eine neue URL.
+    </lib-msg-div>
+  </ng-container>
+
+</mat-expansion-panel>

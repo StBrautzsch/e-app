@@ -1,0 +1,17 @@
+@import "~projects/libs/src/lib/styles/global_styles";
+
+div {
+  overflow: hidden;
+}
+
+.item  {
+  height: 50px;
+  margin: 5px 0 5px 0;
+}
+
+.day {
+  color: white;
+  font-size: larger;
+  background-color: $primary-color;
+  padding: 0 10px 0 10px;
+}

@@ -1,0 +1,29 @@
+<div class="flex-row item"
+     (click)="dialog.showSlotDetailsDialogWithUpdateIfRequired(item.item.id)"
+     (pointerenter)="mark = true" (pointerleave)="mark = false"
+     [ngClass]="{'mark': mark}">
+
+  <div class="min center-left">
+
+    <button *ngIf="!item.item.free" mat-icon-button color="warn">
+      <mat-icon>access_alarm</mat-icon>
+    </button>
+
+    <button *ngIf="item.item.free" mat-icon-button class="white-color">
+      <mat-icon>crop_free</mat-icon>
+    </button>
+
+  </div>
+
+  <div class="max center-left">
+    <ng-container *ngIf="app.calcContentWidth() < 500; else large">
+      {{item.item.start | date:'shortTime'}} Uhr ( {{item.item.duration}} Min.)
+      <ng-container *ngIf="!item.item.free"><br>{{item.item.mergeClientName()}}</ng-container>
+    </ng-container>
+    <ng-template  #large>
+      {{item.item.start | date:'shortTime'}} Uhr ( {{item.item.duration}} Min.)
+      <ng-container *ngIf="!item.item.free"> - {{item.item.mergeClientName()}}<br>{{item.item.bookingRemark}}</ng-container>
+    </ng-template >
+  </div>
+
+</div>

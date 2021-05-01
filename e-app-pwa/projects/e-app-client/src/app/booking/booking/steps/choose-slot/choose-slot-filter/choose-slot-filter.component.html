@@ -1,0 +1,48 @@
+<mat-tab-group>
+
+  <mat-tab>
+    <ng-template class="tab" mat-tab-label><mat-icon class="mark" matTooltip="Datumsbereich einschränken">event</mat-icon></ng-template>
+    <div class="flex-row filter-height">
+      <div class="min center" style="margin-right: 5px">
+        <mat-datepicker-toggle [for]="picker" class="primary"></mat-datepicker-toggle>
+      </div>
+      <form class="flex-row max">
+        <mat-form-field class="max">
+          <mat-date-range-input [rangePicker]="picker" (keydown)="$event.stopPropagation()" (keyup)="$event.stopPropagation()" (keypress)="$event.stopPropagation()">
+            <input matStartDate placeholder="Datum ab" [(ngModel)]="slotFilter.pickDateStart" (dateChange)="refreshSlotList()" name="dateStartField">
+            <input matEndDate placeholder="Datum bis" [(ngModel)]="slotFilter.pickDateEnd" (dateChange)="refreshSlotList()"  name="dateEndField">
+          </mat-date-range-input>
+          <mat-date-range-picker #picker touchUi (closed)="refreshSlotList()"></mat-date-range-picker>
+        </mat-form-field>
+      </form>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template class="tab" mat-tab-label><mat-icon [ngClass]="{'mark': slotFilter.isHourFilter()}" matTooltip="Uhrzeit einschränken">access_time</mat-icon></ng-template>
+    <div class="flex-row filter-height"><div class="slider max">
+      <ngx-slider [(value)]="slotFilter.hourMin" [(highValue)]="slotFilter.hourMax"  [options]="optionsHours" (userChangeEnd)="refreshSlotList()"></ngx-slider>
+    </div></div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template class="tab" mat-tab-label><mat-icon [ngClass]="{'mark': slotFilter.isWeekdayFilter()}" matTooltip="Wochentage einschränken">date_range</mat-icon></ng-template>
+    <div class="flex-row filter-height"><div class="max">
+      <mat-checkbox class="weekday-checkbox" [(ngModel)]="slotFilter.weekdays[1]" (change)="refreshSlotList()"><div class="weekday-checkbox-label">Mo</div></mat-checkbox>
+      <mat-checkbox class="weekday-checkbox" [(ngModel)]="slotFilter.weekdays[2]" (change)="refreshSlotList()"><div class="weekday-checkbox-label">Di</div></mat-checkbox>
+      <mat-checkbox class="weekday-checkbox" [(ngModel)]="slotFilter.weekdays[3]" (change)="refreshSlotList()"><div class="weekday-checkbox-label">Mi</div></mat-checkbox>
+      <mat-checkbox class="weekday-checkbox" [(ngModel)]="slotFilter.weekdays[4]" (change)="refreshSlotList()"><div class="weekday-checkbox-label">Do</div></mat-checkbox>
+      <mat-checkbox class="weekday-checkbox" [(ngModel)]="slotFilter.weekdays[5]" (change)="refreshSlotList()"><div class="weekday-checkbox-label">Fr</div></mat-checkbox>
+      <mat-checkbox class="weekday-checkbox" [(ngModel)]="slotFilter.weekdays[6]" (change)="refreshSlotList()"><div class="weekday-checkbox-label">Sa</div></mat-checkbox>
+      <mat-checkbox class="weekday-checkbox" [(ngModel)]="slotFilter.weekdays[0]" (change)="refreshSlotList()"><div class="weekday-checkbox-label">So</div></mat-checkbox>
+    </div></div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template class="tab" mat-tab-label><mat-icon [ngClass]="{'mark': slotFilter.isDurationFilter()}" matTooltip="Terminlänge einschränken">av_timer</mat-icon></ng-template>
+    <div class="flex-row filter-height"><div class="slider max">
+      <ngx-slider [(value)]="slotFilter.durationMin" [(highValue)]="slotFilter.durationMax" [options]="optionsDuration" (userChangeEnd)="refreshSlotList()"></ngx-slider>
+    </div></div>
+  </mat-tab>
+
+</mat-tab-group>

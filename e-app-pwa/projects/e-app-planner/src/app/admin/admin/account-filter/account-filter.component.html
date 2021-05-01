@@ -1,0 +1,42 @@
+<div class="flex-row min">
+
+  <div class="min center" style="margin-right: 5px">
+    <mat-icon matListIcon>person_search</mat-icon>
+  </div>
+  <mat-form-field class="max">
+    <mat-label>Accounts filtern</mat-label>
+    <input matInput placeholder="" value="" [(ngModel)]="admin.accountFilter">
+  </mat-form-field>
+
+  <ng-container *ngIf="app.screen.screenSize !== 1">
+    <div class="min center">
+      <button mat-icon-button matTooltip="Klienten filtern"
+              [color]="accentIfTrue(admin.clientFilter)"
+              (click)="admin.clientFilter = !admin.clientFilter">
+        <mat-icon>book_online</mat-icon>
+      </button>
+    </div>
+    <div class="min center">
+      <button mat-icon-button matTooltip="Terminplaner filtern"
+              [color]="accentIfTrue(admin.plannerFilter)"
+              (click)="admin.plannerFilter = !admin.plannerFilter">
+        <mat-icon>date_range</mat-icon>
+      </button>
+    </div>
+    <div class="min center">
+      <button mat-icon-button matTooltip="Admins filtern"
+              [color]="accentIfTrue(admin.adminFilter)"
+              (click)="admin.adminFilter = !admin.adminFilter">
+        <mat-icon>build</mat-icon>
+      </button>
+    </div>
+    <div class="min center">
+      <button mat-icon-button matTooltip="Inaktive Accounts filtern"
+              [color]="accentIfTrue(admin.deactivatedFilter)"
+              (click)="admin.deactivatedFilter = !admin.deactivatedFilter">
+        <mat-icon>remove_circle_outline</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+
+</div>
